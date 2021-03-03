@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MainWindowController {
     public Label expressionLabel;
     public TextField fullRegexField;
-    public ListView expressionListView;
+    public ListView<Expression> expressionListView;
     public Expression ex;
 
     @FXML
@@ -52,7 +52,7 @@ public class MainWindowController {
     }
 
     public void pressedAddExpression(ActionEvent actionEvent) {
-        expressionListView.getItems().add(ex.compileExpression());
+        expressionListView.getItems().add(ex);
     }
 
     public void pressedRemoveExpression(ActionEvent actionEvent) {
