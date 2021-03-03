@@ -111,8 +111,16 @@ public class MainWindowController {
     }
 
     public void pressedRemoveExpression(ActionEvent actionEvent) {
+        int index = expressionListView.getSelectionModel().getSelectedIndex();
+        int size = expressionListView.getItems().size();
         expressions.remove(expressionListView.getSelectionModel().getSelectedItem());
         expressionListView.getItems().remove(expressionListView.getSelectionModel().getSelectedItem());
+        if (index < size-1) {
+            expressionListView.getSelectionModel().select(index);
+        }
+        else {
+            expressionListView.getSelectionModel().select(index-1);
+        }
         refreshExpression();
     }
 
