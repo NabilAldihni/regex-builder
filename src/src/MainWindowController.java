@@ -3,15 +3,22 @@ package src;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.awt.*;
 import javafx.scene.image.Image ;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainWindowController {
@@ -108,6 +115,19 @@ public class MainWindowController {
         expressionListView.getItems().add(ex);
         expressions.add(ex);
         refreshExpression();
+
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("src/editorWindow.fxml"));
+            Stage editorStage = new Stage();
+            editorStage.setTitle("Regex builder - Expression editor");
+            editorStage.setScene(new Scene(root));
+            editorStage.initModality(Modality.APPLICATION_MODAL);
+            editorStage.show();
+        }
+        catch (IOException e){
+            System.out.println("Failed to create a new window");
+        }
     }
 
     public void pressedRemoveExpression(ActionEvent actionEvent) {
