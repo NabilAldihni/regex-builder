@@ -6,26 +6,28 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="679.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.MainWindowController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="679.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.MainWindowController">
    <children>
       <Pane prefHeight="418.0" prefWidth="325.0">
          <children>
-            <Label fx:id="expressionLabel" layoutX="14.0" layoutY="28.0" text="Regular expression" textFill="WHITE" underline="true" />
-            <TextField fx:id="fullRegexField" editable="false" layoutX="14.0" layoutY="54.0" prefHeight="27.0" prefWidth="282.0" style="-fx-border-color: white; -fx-background-color: white;" />
-            <CheckBox layoutX="25.0" layoutY="110.0" mnemonicParsing="false" text="Has to start with first element" textFill="WHITE" />
-            <CheckBox layoutX="25.0" layoutY="141.0" mnemonicParsing="false" text="Has to end with last element" textFill="WHITE" />
+            <Label fx:id="expressionLabel" layoutX="14.0" layoutY="14.0" text="Regular expression" textFill="WHITE" underline="true" />
+            <TextField fx:id="fullRegexField" layoutX="14.0" layoutY="40.0" prefHeight="27.0" prefWidth="282.0" style="-fx-border-color: white; -fx-background-color: white;" />
+            <CheckBox layoutX="25.0" layoutY="96.0" mnemonicParsing="false" text="Has to start with first element" textFill="WHITE" />
+            <CheckBox layoutX="25.0" layoutY="127.0" mnemonicParsing="false" text="Has to end with last element" textFill="WHITE" />
          </children>
          <HBox.margin>
             <Insets right="5.0" />
          </HBox.margin></Pane>
       <Pane prefHeight="200.0" prefWidth="300.0">
          <children>
-            <ListView fx:id="expressionListView" layoutX="-2.0" layoutY="54.0" prefHeight="349.0" prefWidth="298.0" style="-fx-border-color: white; -fx-background-color: white;" />
-            <Label layoutX="14.0" layoutY="29.0" text="Expressions" textFill="WHITE" underline="true" />
+            <ListView fx:id="expressionListView" layoutY="39.0" prefHeight="349.0" prefWidth="298.0" style="-fx-border-color: white; -fx-background-color: white;" />
+            <Label layoutX="16.0" layoutY="14.0" text="Expressions" textFill="WHITE" underline="true" />
          </children>
          <HBox.margin>
             <Insets left="5.0" />
@@ -33,28 +35,63 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="50.0">
          <children>
-            <VBox alignment="BASELINE_CENTER" layoutY="54.0" prefHeight="179.0" prefWidth="48.0">
+            <VBox alignment="BASELINE_CENTER" layoutY="30.0" prefHeight="179.0" prefWidth="48.0">
                <children>
-                  <Button fx:id="addExpressionBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#pressedAddExpression" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-radius: 0;" textAlignment="CENTER" />
+                  <Button fx:id="addExpressionBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#pressedAddExpression" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-radius: 0;" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/plus-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button fx:id="removeExpressionBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#pressedRemoveExpression" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-radius: 0;">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/remove-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <Button fx:id="moveUpBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#pressedMoveUp" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-radius: 0;">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/up-arrow-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <Button fx:id="moveDownBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#pressedMoveDown" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-radius: 0;">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/down-arrow-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <Button fx:id="editExpressionBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#pressedEditExpression" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white; -fx-background-radius: 0;">
                      <VBox.margin>
                         <Insets top="2.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/pencil-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </VBox>
