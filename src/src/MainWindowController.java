@@ -3,10 +3,9 @@ package src;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
@@ -16,6 +15,8 @@ import javafx.scene.image.Image ;
 import java.util.ArrayList;
 
 public class MainWindowController {
+    public ArrayList<Expression> expressions;
+
     public Label expressionLabel;
     public TextField fullRegexField;
     public ListView<Expression> expressionListView;
@@ -25,8 +26,8 @@ public class MainWindowController {
     public Button moveUpBtn;
     public Button moveDownBtn;
     public Button editExpressionBtn;
-
-    public ArrayList<Expression> expressions;
+    public CheckBox firstElementCheckBox;
+    public CheckBox lastElementCheckBox;
 
     @FXML
     public void initialize() {
@@ -88,8 +89,17 @@ public class MainWindowController {
     public void refreshExpression() {
         fullRegexField.setText("");
         String fullExp = "";
+
+        if (firstElementCheckBox.isSelected()) {
+            fullExp+="^";
+        }
+
         for (Expression e : expressions) {
             fullExp+=e.compileExpression();
+        }
+
+        if (lastElementCheckBox.isSelected()) {
+            fullExp+="$";
         }
         fullRegexField.setText(fullExp);
     }
@@ -133,5 +143,13 @@ public class MainWindowController {
     }
 
     public void pressedEditExpression(ActionEvent actionEvent) {
+    }
+
+    public void firstElementPressed(ActionEvent actionEvent) {
+        refreshExpression();
+    }
+
+    public void lastElementPressed(ActionEvent actionEvent) {
+        refreshExpression();
     }
 }
