@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
 import javafx.scene.image.Image ;
 
 import java.io.IOException;
@@ -149,5 +152,11 @@ public class MainWindowController {
 
     public void lastElementPressed(ActionEvent actionEvent) {
         refreshExpression();
+    }
+
+    public void copyFullExpression(ActionEvent actionEvent) {
+        StringSelection stringSelection = new StringSelection(fullRegexField.getText());
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
     }
 }

@@ -20,6 +20,7 @@
             <TextField fx:id="fullRegexField" editable="false" layoutX="14.0" layoutY="40.0" prefHeight="29.0" prefWidth="305.0" style="-fx-border-color: white; -fx-background-color: white;" />
             <CheckBox fx:id="firstElementCheckBox" layoutX="25.0" layoutY="96.0" mnemonicParsing="false" onAction="#firstElementPressed" text="Has to start with first element" textFill="WHITE" />
             <CheckBox fx:id="lastElementCheckBox" layoutX="25.0" layoutY="127.0" mnemonicParsing="false" onAction="#lastElementPressed" text="Has to end with last element" textFill="WHITE" />
+            <Button layoutX="25.0" layoutY="358.0" mnemonicParsing="false" onAction="#copyFullExpression" style="-fx-background-color: white; -fx-background-radius: 0;" text="Copy" />
          </children>
          <HBox.margin>
             <Insets right="5.0" />
