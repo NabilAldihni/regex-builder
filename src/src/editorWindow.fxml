@@ -17,7 +17,7 @@
    <children>
       <Pane prefHeight="49.0" prefWidth="679.0">
          <children>
-            <TextField fx:id="expressionField" editable="false" layoutX="24.0" layoutY="11.0" prefHeight="27.0" prefWidth="632.0" />
+            <TextField fx:id="expressionField" layoutX="24.0" layoutY="11.0" prefHeight="27.0" prefWidth="632.0" />
          </children>
       </Pane>
       <HBox prefHeight="449.0" prefWidth="600.0">

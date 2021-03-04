@@ -38,6 +38,7 @@ public class MainWindowController {
 
     @FXML
     public void initialize() {
+        StageConfig.setMainWindowController(this);
         expressions = new ArrayList<Expression>();
 
         Quantifier q1 = new Quantifier("From 2 to 9", "{2,9}");
@@ -93,7 +94,7 @@ public class MainWindowController {
 
     }
 
-    public void refreshExpression() {
+    public String refreshExpression() {
         fullRegexField.setText("");
         String fullExp = "";
 
@@ -109,6 +110,8 @@ public class MainWindowController {
             fullExp+="$";
         }
         fullRegexField.setText(fullExp);
+
+        return fullExp;
     }
 
     public void pressedAddExpression(ActionEvent actionEvent) {
