@@ -41,36 +41,6 @@ public class MainWindowController {
         StageConfig.setMainWindowController(this);
         expressions = new ArrayList<Expression>();
 
-        Quantifier q1 = new Quantifier("From 2 to 9", "{2,9}");
-        Quantifier q2 = new Quantifier("Optional", "?");
-        Group g = new Group("Capture group", "(", ")");
-        ArrayList<Element> es = new ArrayList<Element>();
-        Element e1 = new Element("Any capital letter", "[A-Z]", q1);
-        Element e2 = new Element("Any digit from 0-9", "[0-9]", q2);
-        es.add(e1);
-        es.add(e2);
-
-        ex = new Expression(es, new Quantifier("1 or more", "+"), g);
-
-        expressionListView.getItems().add(ex);
-        expressions.add(ex);
-        ex = new Expression(es, new Quantifier("1 or more", "test1"), g);
-        expressionListView.getItems().add(ex);
-        expressions.add(ex);
-        ex = new Expression(es, new Quantifier("1 or more", "test2"), g);
-        expressionListView.getItems().add(ex);
-        expressions.add(ex);
-        ex = new Expression(es, new Quantifier("1 or more", "test3"), g);
-        expressionListView.getItems().add(ex);
-        expressions.add(ex);
-        ex = new Expression(es, new Quantifier("1 or more", "test4"), g);
-        expressionListView.getItems().add(ex);
-        expressions.add(ex);
-        ex = new Expression(es, new Quantifier("1 or more", "test5"), g);
-        expressionListView.getItems().add(ex);
-        expressions.add(ex);
-        ex = new Expression(es, new Quantifier("1 or more", "test6"), g);
-
         expressionListView.setCellFactory(new Callback<ListView<Expression>, ListCell<Expression>>() {
             @Override
             public ListCell<Expression> call(ListView<Expression> listView) {

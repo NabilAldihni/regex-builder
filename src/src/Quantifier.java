@@ -4,6 +4,11 @@ public class Quantifier {
     private String desc;
     private String symbol;
 
+    public Quantifier() {
+        this.desc = "";
+        this.symbol = "";
+    }
+
     public Quantifier(String desc, String symbol) {
         this.desc = desc;
         this.symbol = symbol;

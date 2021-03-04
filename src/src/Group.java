@@ -5,6 +5,12 @@ public class Group {
     private String startSymbol;
     private String endSymbol;
 
+    public Group() {
+        this.desc = "";
+        this.startSymbol = "";
+        this.endSymbol = "";
+    }
+
     public Group(String desc, String startSymbol, String endSymbol) {
         this.desc = desc;
         this.startSymbol = startSymbol;
