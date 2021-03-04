@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -93,11 +94,14 @@
                   <Pane prefHeight="220.0" prefWidth="200.0" style="-fx-border-color: white;">
                      <children>
                         <Label layoutX="8.0" layoutY="11.0" text="Groups" textFill="WHITE" underline="true" />
-                        <RadioButton layoutX="10.0" layoutY="42.0" mnemonicParsing="false" text="None" textFill="WHITE" />
-                        <RadioButton layoutX="10.0" layoutY="72.0" mnemonicParsing="false" text="Capture group" textFill="WHITE" />
-                        <RadioButton layoutX="10.0" layoutY="102.0" mnemonicParsing="false" text="Non-capture group" textFill="WHITE" />
-                        <RadioButton layoutX="10.0" layoutY="132.0" mnemonicParsing="false" text="Positive lookahead" textFill="WHITE" />
-                        <RadioButton layoutX="10.0" layoutY="162.0" mnemonicParsing="false" text="Negative lookahead" textFill="WHITE" />
+                        <RadioButton layoutX="10.0" layoutY="42.0" mnemonicParsing="false" text="None" textFill="WHITE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="groupToggle" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton layoutX="10.0" layoutY="72.0" mnemonicParsing="false" text="Capture group" textFill="WHITE" toggleGroup="$groupToggle" />
+                        <RadioButton layoutX="10.0" layoutY="102.0" mnemonicParsing="false" text="Non-capture group" textFill="WHITE" toggleGroup="$groupToggle" />
+                        <RadioButton layoutX="10.0" layoutY="132.0" mnemonicParsing="false" text="Positive lookahead" textFill="WHITE" toggleGroup="$groupToggle" />
+                        <RadioButton layoutX="10.0" layoutY="162.0" mnemonicParsing="false" text="Negative lookahead" textFill="WHITE" toggleGroup="$groupToggle" />
                      </children>
                   </Pane>
                   <Pane prefHeight="237.0" prefWidth="202.0" style="-fx-border-color: white;">
