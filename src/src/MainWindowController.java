@@ -115,10 +115,6 @@ public class MainWindowController {
     }
 
     public void pressedAddExpression(ActionEvent actionEvent) {
-        expressionListView.getItems().add(ex);
-        expressions.add(ex);
-        refreshExpression();
-
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getClassLoader().getResource("src/editorWindow.fxml"));
@@ -131,6 +127,7 @@ public class MainWindowController {
         catch (IOException e){
             System.out.println("Failed to create a new window");
         }
+        refreshExpression();
     }
 
     public void pressedRemoveExpression(ActionEvent actionEvent) {

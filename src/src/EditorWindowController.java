@@ -35,18 +35,10 @@ public class EditorWindowController {
     }
 
     public void saveExpressionPressed(ActionEvent actionEvent) {
-        String text = expressionField.getText();
 
-        Quantifier q1 = new Quantifier("From 2 to 9", "");
-        Group g = new Group("Capture group", text, text);
-        ArrayList<Element> es = new ArrayList<Element>();
-        Element e1 = new Element("Any capital letter", "", q1);
-        es.add(e1);
-
-        Expression ex = new Expression(es, new Quantifier("1 or more", "CODE"), g);
-        mainController.expressionListView.getItems().add(ex);
-        mainController.expressions.add(ex);
-        mainController.refreshExpression();
+        //mainController.expressionListView.getItems().add(ex);
+        //mainController.expressions.add(ex);
+        //mainController.refreshExpression();
         Stage stage = (Stage) saveExpressionBtn.getScene().getWindow();
         stage.close();
     }

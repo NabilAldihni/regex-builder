@@ -118,8 +118,9 @@
                         <RadioButton layoutX="12.0" layoutY="142.0" mnemonicParsing="false" text="Exactly" textFill="WHITE" toggleGroup="$quantifierToggle" />
                         <RadioButton layoutX="12.0" layoutY="170.0" mnemonicParsing="false" text="From          to             (inclusive)" textFill="WHITE" toggleGroup="$quantifierToggle" />
                         <RadioButton layoutX="12.0" layoutY="198.0" mnemonicParsing="false" text="          or more" textFill="WHITE" toggleGroup="$quantifierToggle" />
-                        <TextField layoutX="66.0" layoutY="165.0" prefHeight="27.0" prefWidth="21.0" />
-                        <TextField layoutX="76.0" layoutY="175.0" prefHeight="27.0" prefWidth="21.0" />
+                        <TextField fx:id="quantifierRangeFirstField" layoutX="66.0" layoutY="165.0" prefHeight="27.0" prefWidth="21.0" />
+                        <TextField fx:id="quantifierRangeLastField" layoutX="108.0" layoutY="165.0" prefHeight="27.0" prefWidth="21.0" />
+                        <TextField fx:id="quantifierMinField" layoutX="37.0" layoutY="194.0" prefHeight="27.0" prefWidth="21.0" />
                      </children>
                   </Pane>
                </children>
