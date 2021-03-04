@@ -107,6 +107,17 @@
                   <Pane prefHeight="237.0" prefWidth="202.0" style="-fx-border-color: white;">
                      <children>
                         <Label layoutX="11.0" layoutY="13.0" text="Quantifiers" textFill="WHITE" underline="true" />
+                        <RadioButton layoutX="10.0" layoutY="45.0" mnemonicParsing="false" text="1" textFill="WHITE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="quantifierToggle" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton layoutX="10.0" layoutY="70.0" mnemonicParsing="false" text="0 or 1" textFill="WHITE" toggleGroup="$quantifierToggle" />
+                        <RadioButton layoutX="10.0" layoutY="95.0" mnemonicParsing="false" text="0 or more" textFill="WHITE" toggleGroup="$quantifierToggle" />
+                        <RadioButton layoutX="10.0" layoutY="120.0" mnemonicParsing="false" text="1 or more" textFill="WHITE" toggleGroup="$quantifierToggle" />
+                        <RadioButton layoutX="10.0" layoutY="145.0" mnemonicParsing="false" text="Exactly" textFill="WHITE" toggleGroup="$quantifierToggle" />
+                        <RadioButton layoutX="10.0" layoutY="170.0" mnemonicParsing="false" text="From          to             (inclusive)" textFill="WHITE" toggleGroup="$quantifierToggle" />
+                        <RadioButton layoutX="10.0" layoutY="195.0" mnemonicParsing="false" text="          or more" textFill="WHITE" toggleGroup="$quantifierToggle" />
                      </children>
                   </Pane>
                </children>
