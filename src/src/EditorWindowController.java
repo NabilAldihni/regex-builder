@@ -97,7 +97,6 @@ public class EditorWindowController {
         }
 
         // Find selected quantifier
-        System.out.println("S = " + selectedGroup);
         if (!selectedGroup.equals("None")) {
             String selectedQuantifier = "";
             try {
@@ -123,20 +122,38 @@ public class EditorWindowController {
                     quantifier.setSymbol("+");
                     break;
                 case "Exactly":
-                    int exactAmount = Integer.parseInt(quantifierExactlyField.getText());
-                    quantifier.setDesc("Exactly " + exactAmount);
-                    quantifier.setSymbol("{" + exactAmount + "}");
-                    break;
+                    try {
+                        int exactAmount = Integer.parseInt(quantifierExactlyField.getText());
+                        quantifier.setDesc("Exactly " + exactAmount);
+                        quantifier.setSymbol("{" + exactAmount + "}");
+                    }
+                    catch (Exception e) {
+                        System.out.println("Please fill in the appropriate quantifier field with a valid integer");
+                        errors = true;
+                    }
+                break;
                 case "From          to             (inclusive)":
-                    int from = Integer.parseInt(quantifierRangeFirstField.getText());
-                    int to = Integer.parseInt(quantifierRangeLastField.getText());
-                    quantifier.setDesc("From " + from + " to " + to + " (inclusive)");
-                    quantifier.setSymbol("{" + from + "," + to + "}");
+                    try {
+                        int from = Integer.parseInt(quantifierRangeFirstField.getText());
+                        int to = Integer.parseInt(quantifierRangeLastField.getText());
+                        quantifier.setDesc("From " + from + " to " + to + " (inclusive)");
+                        quantifier.setSymbol("{" + from + "," + to + "}");
+                    }
+                    catch (Exception e) {
+                        System.out.println("Please fill in the appropriate quantifier fields with a valid integer");
+                        errors = true;
+                    }
                     break;
                 case "          or more":
-                    int minAmount = Integer.parseInt(quantifierMinField.getText());
-                    quantifier.setDesc(minAmount + " or more");
-                    quantifier.setSymbol("{" + minAmount + ",}");
+                    try {
+                        int minAmount = Integer.parseInt(quantifierMinField.getText());
+                        quantifier.setDesc(minAmount + " or more");
+                        quantifier.setSymbol("{" + minAmount + ",}");
+                    }
+                    catch (Exception e) {
+                        System.out.println("Please fill in the appropriate quantifier field with a valid integer");
+                        errors = true;
+                    }
                     break;
                 default:
                     System.out.println("Error while finding selected quantifier");
