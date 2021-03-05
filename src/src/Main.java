@@ -2,7 +2,6 @@ package src;
 
 /**
  *  To-do:
- *      - Add proper error checking for quantifier textfields (has to be int, not empty, strip, etc...)
  *      - Add all elements that can be added, validate them and make listView work
  *      - Included above: make controls for listView work
  *      - Add proper error dialog boxes to editor window

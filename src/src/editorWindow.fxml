@@ -24,7 +24,27 @@
          <children>
             <Pane prefHeight="449.0" prefWidth="231.0" style="-fx-border-color: white;">
                <children>
-                  <Label layoutX="13.0" layoutY="13.0" text="Elements to match" textFill="WHITE" underline="true" />
+                  <Label layoutX="19.0" layoutY="13.0" text="Elements to match" textFill="WHITE" underline="true" />
+                  <VBox layoutX="6.0" layoutY="39.0" prefHeight="394.0" prefWidth="219.0" spacing="15.0">
+                     <children>
+                        <Label text="Matches exactly" textFill="WHITE" />
+                        <Label text="Any character (except newline)" textFill="WHITE" />
+                        <Label text="Any character (including newline)" textFill="WHITE" />
+                        <Label text="Any lowercase letter" textFill="WHITE" />
+                        <Label text="Any uppercase letter" textFill="WHITE" />
+                        <Label text="Word (alphanumeric or underscore)" textFill="WHITE" />
+                        <Label text="Not a word" textFill="WHITE" />
+                        <Label text="Digit from            to" textFill="WHITE" />
+                        <Label text="Not a digit" textFill="WHITE" />
+                        <Label text="Whitespace" textFill="WHITE" />
+                        <Label text="Not whitespace" textFill="WHITE" />
+                        <Label text="Any character of " textFill="WHITE" />
+                        <Label text="Any character not of " textFill="WHITE" />
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </VBox>
                </children>
             </Pane>
             <Pane prefHeight="449.0" prefWidth="256.0" style="-fx-border-color: white;">
