@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 public class MainWindowController {
     public ArrayList<Expression> expressions;
+    public int selectedIndex;
 
     public Label expressionLabel;
     public TextField fullRegexField;
@@ -43,6 +44,7 @@ public class MainWindowController {
     public void initialize() {
         StageConfig.setMainWindowController(this);
         expressions = new ArrayList<Expression>();
+        selectedIndex = 0;
 
         expressionListView.setCellFactory(new Callback<ListView<Expression>, ListCell<Expression>>() {
             @Override
@@ -67,6 +69,14 @@ public class MainWindowController {
 
     }
 
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
+    public void setSelectedIndex(int selectedIndex) {
+        this.selectedIndex = selectedIndex;
+    }
+
     public String refreshExpression() {
         fullRegexField.setText("");
         String fullExp = "";
@@ -88,6 +98,14 @@ public class MainWindowController {
     }
 
     public void pressedAddExpression(ActionEvent actionEvent) {
+
+        if (expressionListView.getSelectionModel().getSelectedIndex() == -1) {
+            selectedIndex = 0;
+        }
+        else {
+            selectedIndex = expressionListView.getSelectionModel().getSelectedIndex();
+        }
+
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getClassLoader().getResource("src/editorWindow.fxml"));

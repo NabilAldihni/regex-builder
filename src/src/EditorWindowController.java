@@ -166,8 +166,8 @@ public class EditorWindowController {
             elements.add(e);
 
             Expression ex = new Expression(elements, quantifier, group);
-            mainController.expressionListView.getItems().add(ex);
-            mainController.expressions.add(ex);
+            mainController.expressionListView.getItems().add(mainController.getSelectedIndex(), ex);
+            mainController.expressions.add(mainController.getSelectedIndex(), ex);
             mainController.refreshExpression();
 
             Stage stage = (Stage) saveExpressionBtn.getScene().getWindow();
