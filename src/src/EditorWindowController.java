@@ -24,6 +24,10 @@ public class EditorWindowController {
     public ToggleGroup quantifierToggle;
     public TextField quantifierExactlyField;
     public Pane p1;
+    public TextField matchesExactlyField;
+    public TextField elementRangeMinField;
+    public TextField elementRangeMaxField;
+    public TextField elementsCharOfField;
 
     private ArrayList<Element> elements;
     private Group group;
