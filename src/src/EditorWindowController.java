@@ -23,6 +23,7 @@ public class EditorWindowController {
     public Pane quantifierPane;
     public ToggleGroup quantifierToggle;
     public TextField quantifierExactlyField;
+    public Pane p1;
 
     private ArrayList<Element> elements;
     private Group group;
@@ -132,7 +133,7 @@ public class EditorWindowController {
                         errors = true;
                     }
                 break;
-                case "From          to             (inclusive)":
+                case "From               to               (inclusive)":
                     try {
                         int from = Integer.parseInt(quantifierRangeFirstField.getText());
                         int to = Integer.parseInt(quantifierRangeLastField.getText());
@@ -144,7 +145,7 @@ public class EditorWindowController {
                         errors = true;
                     }
                     break;
-                case "          or more":
+                case "            or more":
                     try {
                         int minAmount = Integer.parseInt(quantifierMinField.getText());
                         quantifier.setDesc(minAmount + " or more");
