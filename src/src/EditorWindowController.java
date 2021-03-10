@@ -186,9 +186,9 @@ public class EditorWindowController {
         quantifierPane.setDisable(selected.equals("None"));
     }
 
+
     public void pressedAddElement(ActionEvent actionEvent) {
         String option = ((Button)actionEvent.getSource()).getUserData().toString();
-        System.out.println(option);
 
         if (option.equals("exactly")) {
             System.out.println("exactly");
@@ -203,9 +203,7 @@ public class EditorWindowController {
             System.out.println("anycharnotof");
         }
         else {
-
+            System.out.println(option);
         }
-
-
     }
 }

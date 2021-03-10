@@ -100,7 +100,7 @@
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\w">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\\w">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -113,7 +113,7 @@
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\W">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\\W">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -150,7 +150,7 @@
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\D">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\\D">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -163,7 +163,7 @@
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\s">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\\s">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -176,7 +176,7 @@
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\S">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\\S">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>

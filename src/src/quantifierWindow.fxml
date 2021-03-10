@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="230.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="265.0" prefWidth="231.0" spacing="15.0">
+         <children>
+            <Label text="Quantifier (this element)" textFill="WHITE" underline="true" />
+            <RadioButton mnemonicParsing="false" text="1" textFill="WHITE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="quantifierGroup" />
+               </toggleGroup>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="0 or 1" textFill="WHITE" toggleGroup="$quantifierGroup">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></RadioButton>
+            <RadioButton mnemonicParsing="false" text="0 or more" textFill="WHITE" toggleGroup="$quantifierGroup">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></RadioButton>
+            <RadioButton mnemonicParsing="false" text="1 or more" textFill="WHITE" toggleGroup="$quantifierGroup">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></RadioButton>
+            <RadioButton mnemonicParsing="false" text="Exactly" textFill="WHITE" toggleGroup="$quantifierGroup">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></RadioButton>
+            <RadioButton mnemonicParsing="false" text="From" textFill="WHITE" toggleGroup="$quantifierGroup">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></RadioButton>
+            <RadioButton mnemonicParsing="false" text="or more" textFill="WHITE" toggleGroup="$quantifierGroup">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></RadioButton>
+         </children>
+         <padding>
+            <Insets left="20.0" top="20.0" />
+         </padding>
+      </VBox>
+      <Button contentDisplay="CENTER" layoutX="90.0" layoutY="275.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 0;" text="Apply" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
