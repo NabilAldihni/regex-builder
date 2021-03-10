@@ -2,11 +2,15 @@ package src;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -89,6 +93,19 @@ public class EditorWindowController {
         else {
             e.setDesc("Other");
             e.setSymbol(option);
+        }
+
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("src/quantifierWindow.fxml"));
+            Stage editorStage = new Stage();
+            editorStage.setTitle("Regex builder - Select Quantifier");
+            editorStage.setScene(new Scene(root));
+            editorStage.initModality(Modality.APPLICATION_MODAL);
+            editorStage.show();
+        }
+        catch (IOException exception){
+            System.out.println("Failed to create a new window");
         }
     }
 
