@@ -9,9 +9,8 @@ package src;
  *      - Add proper error dialog boxes to editor window
  *      - Make the listview properly display descriptions (with quantifiers) instead of symbols
  *
- *  Extras:
- *      - When you add an expression make it go below the selected one (pass index to controller)
- *      - Fix text being selected at beginning
+ * Extras:
+ *      -
  */
 
 import javafx.application.Application;

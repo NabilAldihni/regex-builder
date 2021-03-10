@@ -230,7 +230,7 @@
                 <Pane prefHeight="449.0" prefWidth="251.0" style="-fx-border-color: white;">
                     <children>
                         <Label layoutX="10.0" layoutY="13.0" text="Elements" textFill="WHITE" underline="true" />
-                        <ListView layoutX="9.0" layoutY="42.0" prefHeight="384.0" prefWidth="202.0" />
+                        <ListView fx:id="elementListView" layoutX="9.0" layoutY="42.0" prefHeight="384.0" prefWidth="202.0" />
                         <Button fx:id="duplicateExpressionBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="217.0" layoutY="165.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedDuplicateElement" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" textAlignment="CENTER">
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">

@@ -27,8 +27,8 @@ import java.util.concurrent.TimeUnit;
 
 public class MainWindowController {
     // Non-FXML variables
-    public ArrayList<Expression> expressions;
-    public int selectedIndex;
+    private ArrayList<Expression> expressions;
+    private int selectedIndex;
 
     // FXML Elements
     public Label expressionLabel;
@@ -71,7 +71,15 @@ public class MainWindowController {
             }
         });
     }
-
+    
+    public ArrayList<Expression> getExpressions() {
+        return expressions;
+    }
+    
+    public void setExpressions(ArrayList<Expression> expressions) {
+        this.expressions = expressions;
+    }
+    
     public int getSelectedIndex() {
         return selectedIndex;
     }

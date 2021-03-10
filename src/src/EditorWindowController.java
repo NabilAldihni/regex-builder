@@ -5,13 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,13 +26,13 @@ public class EditorWindowController {
     public Pane quantifierPane;
     public ToggleGroup quantifierToggle;
     public TextField quantifierExactlyField;
-    public Pane p1;
     public TextField matchesExactlyField;
     public TextField elementRangeMinField;
     public TextField elementRangeMaxField;
     public TextField elementsCharOfField;
     public TextField elementsCharNotOfField;
-
+    public ListView elementListView;
+    
     // Non-FXML variables
     private ArrayList<Element> elements;
     private Group group;
@@ -52,8 +50,36 @@ public class EditorWindowController {
         elements = new ArrayList<Element>();
         group = new Group();
         quantifier = new Quantifier();
+    
+        // Cell Factory to allow the ListView to store Element objects while displaying only a string of the expression
+        elementListView.setCellFactory(new Callback<ListView<Element>, ListCell<Element>>() {
+            @Override
+            public ListCell<Element> call(ListView<Element> listView) {
+                ListCell<Element> cell = new ListCell<Element>(){
+                    @Override
+                    protected void updateItem(Element e, boolean empty){
+                        super.updateItem(e, empty);
+                        if (e != null) {
+                            setText(e.getSymbol() + e.getQuantifier().getSymbol());
+                        }
+                        else {
+                            setText("");
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
     }
-
+    
+    public ArrayList<Element> getElements() {
+        return elements;
+    }
+    
+    public void setElements(ArrayList<Element> elements) {
+        this.elements = elements;
+    }
+    
     // Removes selected element when remove button is pressed
     public void pressedRemoveElement(ActionEvent actionEvent) {
     }
@@ -115,6 +141,9 @@ public class EditorWindowController {
             editorStage.setScene(new Scene(root));
             editorStage.initModality(Modality.APPLICATION_MODAL);
             editorStage.show();
+            
+            QuantifierWindowController quantifierController = StageConfig.getQuantifierWindowController();
+            quantifierController.setElement(e);
         }
         catch (IOException exception){
             System.out.println("Failed to create a new window");
@@ -239,7 +268,7 @@ public class EditorWindowController {
             // Adds created expression to main controller's ListView and ArrayList
             Expression ex = new Expression(elements, quantifier, group);
             mainController.expressionListView.getItems().add(index, ex);
-            mainController.expressions.add(index, ex);
+            mainController.getExpressions().add(index, ex);
             
             // Selects the added expression in the ListView
             mainController.expressionListView.getSelectionModel().select(index);
