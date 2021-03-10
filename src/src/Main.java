@@ -2,6 +2,7 @@ package src;
 
 /**
  *  To-do:
+ *      - Make quantifier window communicate with previous window
  *      - Add all elements that can be added, validate them and make listView work
  *          - Validation for elements with textfields
  *      - Included above: make controls for listView work
