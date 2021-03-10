@@ -5,6 +5,12 @@ public class Element {
     private String symbol;
     private Quantifier quantifier;
 
+    public Element() {
+        this.desc = "";
+        this.symbol = "";
+        this.quantifier = null;
+    }
+
     public Element(String desc, String symbol, Quantifier quantifier) {
         this.desc = desc;
         this.symbol = symbol;

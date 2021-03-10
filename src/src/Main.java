@@ -3,8 +3,10 @@ package src;
 /**
  *  To-do:
  *      - Add all elements that can be added, validate them and make listView work
+ *          - Validation for elements with textfields
  *      - Included above: make controls for listView work
  *      - Add proper error dialog boxes to editor window
+ *      - Make the listview properly display descriptions (with quantifiers) instead of symbols
  *
  *  Extras:
  *      - When you add an expression make it go below the selected one (pass index to controller)

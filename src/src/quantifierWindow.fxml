@@ -50,6 +50,6 @@
             <Insets left="20.0" top="20.0" />
          </padding>
       </VBox>
-      <Button contentDisplay="CENTER" layoutX="90.0" layoutY="275.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 0;" text="Apply" textAlignment="CENTER" />
+      <Button contentDisplay="CENTER" layoutX="91.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 0;" text="Apply" textAlignment="CENTER" />
    </children>
 </AnchorPane>

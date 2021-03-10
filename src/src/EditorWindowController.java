@@ -28,6 +28,7 @@ public class EditorWindowController {
     public TextField elementRangeMinField;
     public TextField elementRangeMaxField;
     public TextField elementsCharOfField;
+    public TextField elementsCharNotOfField;
 
     private ArrayList<Element> elements;
     private Group group;
@@ -56,6 +57,39 @@ public class EditorWindowController {
     }
 
     public void pressedEditExpression(ActionEvent actionEvent) {
+    }
+
+
+    public void selectedGroup(ActionEvent actionEvent) {
+        String selected = ((RadioButton) groupToggle.getSelectedToggle()).getText();
+
+        quantifierPane.setDisable(selected.equals("None"));
+    }
+
+    public void pressedAddElement(ActionEvent actionEvent) {
+        String option = ((Button)actionEvent.getSource()).getUserData().toString();
+        Element e = new Element();
+
+        if (option.equals("exactly")) {
+            e.setDesc("Matches '" + matchesExactlyField.getText() + "' exactly");
+            e.setSymbol("(?:" + matchesExactlyField.getText() + ")");
+        }
+        else if (option.equals("digitRange")) {
+            e.setDesc("Digit from " + elementRangeMinField.getText() + " to " + elementRangeMaxField.getText());
+            e.setSymbol("[" + elementRangeMinField.getText() + "-" + elementRangeMaxField.getText() + "]");
+        }
+        else if (option.equals("anyCharOf")) {
+            e.setDesc("Any char of '" + elementsCharOfField.getText() + "'");
+            e.setSymbol("[" + elementsCharOfField.getText() + "]");
+        }
+        else if (option.equals("anyCharNotOf")) {
+            e.setDesc("Any char not of '" + elementsCharNotOfField.getText() + "'");
+            e.setSymbol("[^" + elementsCharNotOfField.getText() + "]");
+        }
+        else {
+            e.setDesc("Other");
+            e.setSymbol(option);
+        }
     }
 
     public void saveExpressionPressed(ActionEvent actionEvent) {
@@ -136,7 +170,7 @@ public class EditorWindowController {
                         System.out.println("Please fill in the appropriate quantifier field with a valid integer");
                         errors = true;
                     }
-                break;
+                    break;
                 case "From               to               (inclusive)":
                     try {
                         int from = Integer.parseInt(quantifierRangeFirstField.getText());
@@ -177,33 +211,6 @@ public class EditorWindowController {
 
             Stage stage = (Stage) saveExpressionBtn.getScene().getWindow();
             stage.close();
-        }
-    }
-
-    public void selectedGroup(ActionEvent actionEvent) {
-        String selected = ((RadioButton) groupToggle.getSelectedToggle()).getText();
-
-        quantifierPane.setDisable(selected.equals("None"));
-    }
-
-
-    public void pressedAddElement(ActionEvent actionEvent) {
-        String option = ((Button)actionEvent.getSource()).getUserData().toString();
-
-        if (option.equals("exactly")) {
-            System.out.println("exactly");
-        }
-        else if (option.equals("digitRange")) {
-            System.out.println("digit range");
-        }
-        else if (option.equals("anyCharOf")) {
-            System.out.println("anycharof");
-        }
-        else if (option.equals("anyCharNotOf")) {
-            System.out.println("anycharnotof");
-        }
-        else {
-            System.out.println(option);
         }
     }
 }

@@ -23,7 +23,7 @@
         </Pane>
         <HBox prefHeight="449.0" prefWidth="679.0">
             <children>
-                <Pane fx:id="p1" prefHeight="449.0" prefWidth="231.0" style="-fx-border-color: white;">
+                <Pane prefHeight="449.0" prefWidth="231.0" style="-fx-border-color: white;">
                     <children>
                         <Label layoutX="19.0" layoutY="13.0" text="Elements to match" textFill="WHITE" underline="true" />
                         <VBox layoutX="6.0" layoutY="39.0" prefHeight="394.0" prefWidth="219.0" spacing="15.0">
@@ -56,7 +56,7 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Any character (except newline)" textFill="WHITE"  />
+                                        <Label text="Any character (except newline)" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
@@ -141,7 +141,7 @@
                                              </font>
                                           </TextField>
                                           <Label text="to" textFill="WHITE" />
-                                          <TextField id="inp1" fx:id="elementRangeMaxField" minHeight="-Infinity" prefHeight="17.0" prefWidth="26.0">
+                                          <TextField fx:id="elementRangeMaxField" minHeight="-Infinity" prefHeight="17.0" prefWidth="26.0">
                                              <font>
                                                 <Font size="9.0" />
                                              </font>
@@ -216,7 +216,7 @@
                                             </graphic>
                                         </Button>
                                         <Label text="Any character not of " textFill="WHITE" />
-                              <TextField fx:id="elementsCharOfFieldelementsCharNotOfField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="71.0">
+                              <TextField fx:id="elementsCharNotOfField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="71.0">
                                  <font>
                                     <Font size="9.0" />
                                  </font>
