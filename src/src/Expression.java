@@ -7,6 +7,7 @@ public class Expression {
     private Quantifier quantifier;
     private Group group;
 
+    // Class constructor
     public Expression(ArrayList<Element> elements, Quantifier quantifier, Group group) {
         this.elements = elements;
         this.quantifier = quantifier;
@@ -42,19 +43,20 @@ public class Expression {
     public void setGroup(Group group) {
         this.group = group;
     }
-
-   public String compileExpression()
-   {
-       String e = "";
-       e += this.group.getStartSymbol();
-       for (Element element : this.elements)
-       {
-           e += element.getSymbol();
-           e += element.getQuantifier().getSymbol();
-       }
-       e += this.group.getEndSymbol();
-       e += this.quantifier.getSymbol();
-
-       return e;
-   }
+    
+    // Join the different parts of the expression and returns a single string that represents the whole expression
+    public String compileExpression()
+    {
+        String e = "";
+        e += this.group.getStartSymbol();
+        for (Element element : this.elements)
+        {
+            e += element.getSymbol();
+            e += element.getQuantifier().getSymbol();
+        }
+        e += this.group.getEndSymbol();
+        e += this.quantifier.getSymbol();
+ 
+        return e;
+    }
 }

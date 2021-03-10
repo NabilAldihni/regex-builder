@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class EditorWindowController {
+    // FXML variables
     public TextField expressionField;
     public Button saveExpressionBtn;
     public MainWindowController mainController;
@@ -34,13 +35,18 @@ public class EditorWindowController {
     public TextField elementsCharOfField;
     public TextField elementsCharNotOfField;
 
+    // Non-FXML variables
     private ArrayList<Element> elements;
     private Group group;
     private Quantifier quantifier;
 
     @FXML
+    // Method called by FXML when the window is started
     public void initialize() {
+        // Updated editorWindowController in StageConfig class so other controllers can access it
         StageConfig.setEditorWindowController(this);
+        
+        // Stores the main window controller to update the list later on
         mainController = StageConfig.getMainWindowController();
 
         elements = new ArrayList<Element>();
@@ -48,28 +54,34 @@ public class EditorWindowController {
         quantifier = new Quantifier();
     }
 
-    public void pressedDuplicateExpression(ActionEvent actionEvent) {
+    // Removes selected element when remove button is pressed
+    public void pressedRemoveElement(ActionEvent actionEvent) {
     }
 
-    public void pressedRemoveExpression(ActionEvent actionEvent) {
-    }
-
+    // Moves element up in the list
     public void pressedMoveUp(ActionEvent actionEvent) {
     }
 
+    // Moves element down in the list
     public void pressedMoveDown(ActionEvent actionEvent) {
     }
 
-    public void pressedEditExpression(ActionEvent actionEvent) {
+    // Allows user to edit the element's quantifier
+    public void pressedEditElement(ActionEvent actionEvent) {
+    }
+    
+    // Duplicates selected element and adds it below
+    public void pressedDuplicateElement(ActionEvent actionEvent) {
     }
 
-
+    // Called when the user selects a group - if the group is 'None' the quantifier section will be disabled
     public void selectedGroup(ActionEvent actionEvent) {
         String selected = ((RadioButton) groupToggle.getSelectedToggle()).getText();
 
         quantifierPane.setDisable(selected.equals("None"));
     }
 
+    // Called when any element is added - opens quantifier window
     public void pressedAddElement(ActionEvent actionEvent) {
         String option = ((Button)actionEvent.getSource()).getUserData().toString();
         Element e = new Element();
@@ -109,6 +121,8 @@ public class EditorWindowController {
         }
     }
 
+    // Called when "Save" button is pressed
+    // Collects all the selected data and creates an expression that is then added to the main window's list
     public void saveExpressionPressed(ActionEvent actionEvent) {
         boolean errors = false;
 
@@ -122,8 +136,7 @@ public class EditorWindowController {
             errors = true;
         }
 
-        quantifierPane.setDisable(selectedGroup.equals("None"));
-
+        // Populates the properties of the group according to selection
         switch (selectedGroup) {
             case "None":
                 break;
@@ -162,6 +175,7 @@ public class EditorWindowController {
                 errors = true;
             }
 
+            // Populates the properties of the quantifier according to the selection
             switch (selectedQuantifier) {
                 case "1":
                     break;
@@ -218,14 +232,16 @@ public class EditorWindowController {
         }
 
         if (!errors) {
-            Element e = new Element("wassup", "[a-zA-Z0-9]", new Quantifier("hey", ""));
+            Element e = new Element("testDesc", "[a-zA-Z0-9]", new Quantifier("testDesc2", ""));
             elements.add(e);
 
+            // Adds created expression to main controller's ListView and ArrayList
             Expression ex = new Expression(elements, quantifier, group);
             mainController.expressionListView.getItems().add(mainController.getSelectedIndex(), ex);
             mainController.expressions.add(mainController.getSelectedIndex(), ex);
             mainController.refreshExpression();
 
+            // Closes the window and returns to main window
             Stage stage = (Stage) saveExpressionBtn.getScene().getWindow();
             stage.close();
         }

@@ -4,13 +4,15 @@ public class Group {
     private String desc;
     private String startSymbol;
     private String endSymbol;
-
+    
+    // Empty constructor so objects can be instantiated in the controller classes without knowing the properties
     public Group() {
         this.desc = "";
         this.startSymbol = "";
         this.endSymbol = "";
     }
-
+    
+    // Constructor with parameters so objects can be instantiated when the properties are already known
     public Group(String desc, String startSymbol, String endSymbol) {
         this.desc = desc;
         this.startSymbol = startSymbol;

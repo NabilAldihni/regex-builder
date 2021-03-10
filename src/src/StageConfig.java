@@ -1,6 +1,7 @@
 package src;
 
 public class StageConfig {
+    // This class stores one instance of each controller. They are static and can be accessed from any controller
     private static MainWindowController mainWindowController = null;
     private static EditorWindowController editorWindowController = null;
     private static QuantifierWindowController quantifierWindowController = null;
