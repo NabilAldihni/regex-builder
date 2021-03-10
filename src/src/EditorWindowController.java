@@ -242,7 +242,6 @@ public class EditorWindowController {
             mainController.expressions.add(index, ex);
             
             // Selects the added expression in the ListView
-            if (index == 0) {
             mainController.expressionListView.getSelectionModel().select(index);
             
             mainController.refreshExpression();
