@@ -2,7 +2,7 @@ package src;
 
 /**
  *  To-do:
- *      - Make quantifier window communicate with previous window
+ *      - Escape appropriate characters
  *      - Add all elements that can be added, validate them and make listView work
  *          - Validation for elements with textfields
  *      - Included above: make controls for listView work
@@ -25,6 +25,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(MainWindowController.class.getResource("/src/mainWindow.fxml"));
         primaryStage.setTitle("Regex Builder");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

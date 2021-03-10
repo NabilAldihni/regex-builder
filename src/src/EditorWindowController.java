@@ -136,11 +136,12 @@ public class EditorWindowController {
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getClassLoader().getResource("src/quantifierWindow.fxml"));
-            Stage editorStage = new Stage();
-            editorStage.setTitle("Regex builder - Select Quantifier");
-            editorStage.setScene(new Scene(root));
-            editorStage.initModality(Modality.APPLICATION_MODAL);
-            editorStage.show();
+            Stage quantifierStage = new Stage();
+            quantifierStage.setTitle("Regex builder - Select Quantifier");
+            quantifierStage.setScene(new Scene(root));
+            quantifierStage.initModality(Modality.APPLICATION_MODAL);
+            quantifierStage.setResizable(false);
+            quantifierStage.show();
             
             QuantifierWindowController quantifierController = StageConfig.getQuantifierWindowController();
             quantifierController.setElement(e);
@@ -261,9 +262,6 @@ public class EditorWindowController {
         }
 
         if (!errors) {
-            Element e = new Element("testDesc", "[a-zA-Z0-9]", new Quantifier("testDesc2", ""));
-            elements.add(e);
-
             int index = mainController.getSelectedIndex();
             // Adds created expression to main controller's ListView and ArrayList
             Expression ex = new Expression(elements, quantifier, group);

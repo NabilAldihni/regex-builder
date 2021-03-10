@@ -128,6 +128,7 @@ public class MainWindowController {
             editorStage.setScene(new Scene(root));
             // APPLICATION_MODAL disables this window while the other one is open
             editorStage.initModality(Modality.APPLICATION_MODAL);
+            editorStage.setResizable(false);
             editorStage.show();
         }
         catch (IOException e){
