@@ -129,7 +129,7 @@ public class EditorWindowController {
         // Find selected group
         String selectedGroup = "";
         try {
-            selectedGroup = ((RadioButton) groupToggle.getSelectedToggle()).getText();
+            selectedGroup = ((RadioButton) groupToggle.getSelectedToggle()).getUserData().toString();
         }
         catch (Exception e) {
             System.out.println("No group option was selected!");
@@ -138,24 +138,24 @@ public class EditorWindowController {
 
         // Populates the properties of the group according to selection
         switch (selectedGroup) {
-            case "None":
+            case "none":
                 break;
-            case "Capture group":
+            case "capGroup":
                 group.setDesc(selectedGroup);
                 group.setStartSymbol("(");
                 group.setEndSymbol(")");
                 break;
-            case "Non-capture group":
+            case "nonCapGroup":
                 group.setDesc(selectedGroup);
                 group.setStartSymbol("(?:");
                 group.setEndSymbol(")");
                 break;
-            case "Positive lookahead":
+            case "posLook":
                 group.setDesc(selectedGroup);
                 group.setStartSymbol("(?=");
                 group.setEndSymbol(")");
                 break;
-            case "Negative lookahead":
+            case "negLook":
                 group.setDesc(selectedGroup);
                 group.setStartSymbol("(?!");
                 group.setEndSymbol(")");
@@ -169,7 +169,7 @@ public class EditorWindowController {
         if (!selectedGroup.equals("None")) {
             String selectedQuantifier = "";
             try {
-                selectedQuantifier = ((RadioButton) quantifierToggle.getSelectedToggle()).getText();
+                selectedQuantifier = ((RadioButton) quantifierToggle.getSelectedToggle()).getUserData().toString();
             } catch (Exception e) {
                 System.out.println("There was no quantifier option selected!");
                 errors = true;
@@ -179,19 +179,19 @@ public class EditorWindowController {
             switch (selectedQuantifier) {
                 case "1":
                     break;
-                case "0 or 1":
-                    quantifier.setDesc(selectedQuantifier);
+                case "01":
+                    quantifier.setDesc("0 or 1");
                     quantifier.setSymbol("?");
                     break;
-                case "0 or more":
-                    quantifier.setDesc(selectedQuantifier);
+                case "0+":
+                    quantifier.setDesc("0 or more");
                     quantifier.setSymbol("*");
                     break;
-                case "1 or more":
-                    quantifier.setDesc(selectedQuantifier);
+                case "1+":
+                    quantifier.setDesc("1 or more");
                     quantifier.setSymbol("+");
                     break;
-                case "Exactly":
+                case "exact":
                     try {
                         int exactAmount = Integer.parseInt(quantifierExactlyField.getText());
                         quantifier.setDesc("Exactly " + exactAmount);
@@ -202,7 +202,7 @@ public class EditorWindowController {
                         errors = true;
                     }
                     break;
-                case "From               to               (inclusive)":
+                case "range":
                     try {
                         int from = Integer.parseInt(quantifierRangeFirstField.getText());
                         int to = Integer.parseInt(quantifierRangeLastField.getText());
@@ -214,7 +214,7 @@ public class EditorWindowController {
                         errors = true;
                     }
                     break;
-                case "            or more":
+                case "minAmount":
                     try {
                         int minAmount = Integer.parseInt(quantifierMinField.getText());
                         quantifier.setDesc(minAmount + " or more");
@@ -235,10 +235,16 @@ public class EditorWindowController {
             Element e = new Element("testDesc", "[a-zA-Z0-9]", new Quantifier("testDesc2", ""));
             elements.add(e);
 
+            int index = mainController.getSelectedIndex();
             // Adds created expression to main controller's ListView and ArrayList
             Expression ex = new Expression(elements, quantifier, group);
-            mainController.expressionListView.getItems().add(mainController.getSelectedIndex(), ex);
-            mainController.expressions.add(mainController.getSelectedIndex(), ex);
+            mainController.expressionListView.getItems().add(index, ex);
+            mainController.expressions.add(index, ex);
+            
+            // Selects the added expression in the ListView
+            if (index == 0) {
+            mainController.expressionListView.getSelectionModel().select(index);
+            
             mainController.refreshExpression();
 
             // Closes the window and returns to main window

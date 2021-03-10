@@ -108,7 +108,7 @@ public class MainWindowController {
             selectedIndex = 0;
         }
         else {
-            selectedIndex = expressionListView.getSelectionModel().getSelectedIndex();
+            selectedIndex = expressionListView.getSelectionModel().getSelectedIndex() + 1;
         }
 
         // Opens the Editor Window
