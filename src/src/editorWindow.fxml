@@ -21,7 +21,7 @@
                 <TextField fx:id="expressionField" layoutX="24.0" layoutY="11.0" prefHeight="27.0" prefWidth="632.0" />
             </children>
         </Pane>
-        <HBox prefHeight="449.0" prefWidth="600.0">
+        <HBox prefHeight="449.0" prefWidth="679.0">
             <children>
                 <Pane fx:id="p1" prefHeight="449.0" prefWidth="231.0" style="-fx-border-color: white;">
                     <children>
@@ -30,7 +30,7 @@
                             <children>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="exactly">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -38,7 +38,7 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Matches exactly" textFill="WHITE" userData="exactly"/>
+                                        <Label text="Matches exactly" textFill="WHITE" />
                                           <TextField fx:id="matchesExactlyField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="96.0">
                                              <font>
                                                 <Font size="9.0" />
@@ -48,7 +48,7 @@
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData=".">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -56,12 +56,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Any character (except newline)" textFill="WHITE" userData="anyCharNoNewLine"/>
+                                        <Label text="Any character (except newline)" textFill="WHITE"  />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="[\s\S]">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -69,12 +69,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Any character (including newline)" textFill="WHITE" userData="anyCharNewLine"/>
+                                        <Label text="Any character (including newline)" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="[a-z]">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -82,12 +82,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Any lowercase letter" textFill="WHITE" userData="lowercaseLetter"/>
+                                        <Label text="Any lowercase letter" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="[A-Z]">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -95,12 +95,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Any uppercase letter" textFill="WHITE" userData="uppercaseLetter"/>
+                                        <Label text="Any uppercase letter" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\w">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -108,12 +108,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Word (alphanumeric or underscore)" textFill="WHITE" userData="word"/>
+                                        <Label text="Word (alphanumeric or underscore)" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\W">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -121,12 +121,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Not a word" textFill="WHITE" userData="notWord"/>
+                                        <Label text="Not a word" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="digitRange">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -134,23 +134,23 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Digit from" textFill="WHITE" userData="digitRange"/>
-                              <TextField fx:id="elementRangeMinField" minHeight="-Infinity" prefHeight="17.0" prefWidth="26.0">
-                                 <font>
-                                    <Font size="9.0" />
-                                 </font>
-                              </TextField>
-                              <Label text="to" textFill="WHITE" />
-                              <TextField id="inp1" fx:id="elementRangeMaxField" minHeight="-Infinity" prefHeight="17.0" prefWidth="26.0">
-                                 <font>
-                                    <Font size="9.0" />
-                                 </font>
-                              </TextField>
+                                        <Label text="Digit from" textFill="WHITE" />
+                                          <TextField fx:id="elementRangeMinField" minHeight="-Infinity" prefHeight="17.0" prefWidth="26.0">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="to" textFill="WHITE" />
+                                          <TextField id="inp1" fx:id="elementRangeMaxField" minHeight="-Infinity" prefHeight="17.0" prefWidth="26.0">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </TextField>
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\D">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -158,12 +158,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Not a digit" textFill="WHITE" userData="notDigit"/>
+                                        <Label text="Not a digit" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\s">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -171,12 +171,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Whitespace" textFill="WHITE" userData="whitespace"/>
+                                        <Label text="Whitespace" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="\S">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -184,12 +184,12 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Not whitespace" textFill="WHITE" userData="notWhitespace"/>
+                                        <Label text="Not whitespace" textFill="WHITE" />
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="anyCharOf">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -197,17 +197,17 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Any character of " textFill="WHITE" userData="anyCharOf"/>
-                              <TextField fx:id="elementsCharOfField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="72.0">
-                                 <font>
-                                    <Font size="9.0" />
-                                 </font>
-                              </TextField>
+                                        <Label text="Any character of " textFill="WHITE" />
+                                          <TextField fx:id="elementsCharOfField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="72.0">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </TextField>
                                     </children>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                                     <children>
-                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0;">
+                                        <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddElement" prefHeight="17.0" prefWidth="17.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" userData="anyCharNotOf">
                                             <font>
                                                 <Font name="Rockwell" size="6.0" />
                                             </font>
@@ -215,7 +215,7 @@
                                                 <Label prefHeight="17.0" prefWidth="49.0" text="+" />
                                             </graphic>
                                         </Button>
-                                        <Label text="Any character not of " textFill="WHITE" userData="anyCharNotOf"/>
+                                        <Label text="Any character not of " textFill="WHITE" />
                               <TextField fx:id="elementsCharOfFieldelementsCharNotOfField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="71.0">
                                  <font>
                                     <Font size="9.0" />
@@ -227,11 +227,11 @@
                         </VBox>
                     </children>
                 </Pane>
-                <Pane prefHeight="449.0" prefWidth="256.0" style="-fx-border-color: white;">
+                <Pane prefHeight="449.0" prefWidth="251.0" style="-fx-border-color: white;">
                     <children>
                         <Label layoutX="10.0" layoutY="13.0" text="Elements" textFill="WHITE" underline="true" />
                         <ListView layoutX="9.0" layoutY="42.0" prefHeight="384.0" prefWidth="202.0" />
-                        <Button fx:id="addExpressionBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="217.0" layoutY="165.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddExpression" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" textAlignment="CENTER">
+                        <Button fx:id="duplicateExpressionBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="217.0" layoutY="165.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedDuplicateExpression" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" textAlignment="CENTER">
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

@@ -43,7 +43,7 @@ public class EditorWindowController {
         quantifier = new Quantifier();
     }
 
-    public void pressedAddExpression(ActionEvent actionEvent) {
+    public void pressedDuplicateExpression(ActionEvent actionEvent) {
     }
 
     public void pressedRemoveExpression(ActionEvent actionEvent) {
@@ -186,4 +186,26 @@ public class EditorWindowController {
         quantifierPane.setDisable(selected.equals("None"));
     }
 
+    public void pressedAddElement(ActionEvent actionEvent) {
+        String option = ((Button)actionEvent.getSource()).getUserData().toString();
+        System.out.println(option);
+
+        if (option.equals("exactly")) {
+            System.out.println("exactly");
+        }
+        else if (option.equals("digitRange")) {
+            System.out.println("digit range");
+        }
+        else if (option.equals("anyCharOf")) {
+            System.out.println("anycharof");
+        }
+        else if (option.equals("anyCharNotOf")) {
+            System.out.println("anycharnotof");
+        }
+        else {
+
+        }
+
+
+    }
 }
