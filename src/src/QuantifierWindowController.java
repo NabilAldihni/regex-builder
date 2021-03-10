@@ -116,6 +116,7 @@ public class QuantifierWindowController {
             element.setQuantifier(quantifier);
             editorController.elementListView.getItems().add(element);
             editorController.getElements().add(element);
+            editorController.refreshExpression();
             
             Stage stage = (Stage) applyQuantifierBtn.getScene().getWindow();
             stage.close();

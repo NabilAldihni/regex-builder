@@ -36,7 +36,7 @@
         </Pane>
         <Pane prefHeight="200.0" prefWidth="50.0">
             <children>
-                <VBox alignment="BASELINE_CENTER" layoutY="30.0" prefHeight="179.0" prefWidth="48.0">
+                <VBox alignment="BASELINE_CENTER" layoutY="30.0" prefHeight="179.0" prefWidth="48.0" spacing="2.0">
                     <children>
                         <Button fx:id="addExpressionBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddExpression" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" textAlignment="CENTER">
                             <graphic>
@@ -48,7 +48,7 @@
                             </graphic></Button>
                         <Button fx:id="removeExpressionBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedRemoveExpression" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;">
                             <VBox.margin>
-                                <Insets top="2.0" />
+                                <Insets />
                             </VBox.margin>
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
@@ -60,7 +60,7 @@
                         </Button>
                         <Button fx:id="moveUpBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedMoveUp" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;">
                             <VBox.margin>
-                                <Insets top="2.0" />
+                                <Insets />
                             </VBox.margin>
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
@@ -72,7 +72,7 @@
                         </Button>
                         <Button fx:id="moveDownBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedMoveDown" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;">
                             <VBox.margin>
-                                <Insets top="2.0" />
+                                <Insets />
                             </VBox.margin>
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
@@ -84,7 +84,7 @@
                         </Button>
                         <Button fx:id="editExpressionBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedEditExpression" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;">
                             <VBox.margin>
-                                <Insets top="2.0" />
+                                <Insets />
                             </VBox.margin>
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
@@ -94,6 +94,18 @@
                                 </ImageView>
                             </graphic>
                         </Button>
+                  <Button fx:id="duplicateExpressionBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedDuplicateExpression" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;">
+                     <graphic>
+                        <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/duplicate-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
                     </children>
                 </VBox>
             </children></Pane>

@@ -80,16 +80,64 @@ public class EditorWindowController {
         this.elements = elements;
     }
     
+    // Called every time a change is made to the expressions list. Updates the string in the textField
+    public String refreshExpression() {
+        expressionField.setText("");
+        String fullExp = "";
+        
+        for (Element e: elements) {
+            fullExp += e.getSymbol();
+            fullExp += e.getQuantifier().getSymbol();
+        }
+        
+        expressionField.setText(fullExp);
+        
+        return fullExp;
+    }
+    
     // Removes selected element when remove button is pressed
     public void pressedRemoveElement(ActionEvent actionEvent) {
+        int index = elementListView.getSelectionModel().getSelectedIndex();
+        int size = elementListView.getItems().size();
+        elements.remove(elementListView.getSelectionModel().getSelectedItem());
+        elementListView.getItems().remove(elementListView.getSelectionModel().getSelectedItem());
+    
+        // Automatically selects the expression that takes its place or the last expression
+        if (index < size-1) {
+            elementListView.getSelectionModel().select(index);
+        }
+        else {
+            elementListView.getSelectionModel().select(index-1);
+        }
+        refreshExpression();
     }
 
     // Moves element up in the list
     public void pressedMoveUp(ActionEvent actionEvent) {
+        Element item = (Element) elementListView.getSelectionModel().getSelectedItem();
+        int index = elementListView.getSelectionModel().getSelectedIndex();
+        if (index > 0) {
+            elementListView.getItems().remove(index);
+            elementListView.getItems().add(index-1, item);
+            elementListView.getSelectionModel().select(index-1);
+            elements.remove(index);
+            elements.add(index-1, item);
+        }
+        refreshExpression();
     }
 
     // Moves element down in the list
     public void pressedMoveDown(ActionEvent actionEvent) {
+        Element item = (Element) elementListView.getSelectionModel().getSelectedItem();
+        int index = elementListView.getSelectionModel().getSelectedIndex();
+        if (index < elementListView.getItems().size() - 1) {
+            elementListView.getItems().remove(index);
+            elementListView.getItems().add(index+1, item);
+            elementListView.getSelectionModel().select(index+1);
+            elements.remove(index);
+            elements.add(index+1, item);
+        }
+        refreshExpression();
     }
 
     // Allows user to edit the element's quantifier
@@ -98,6 +146,11 @@ public class EditorWindowController {
     
     // Duplicates selected element and adds it below
     public void pressedDuplicateElement(ActionEvent actionEvent) {
+        int index = elementListView.getSelectionModel().getSelectedIndex();
+        elementListView.getItems().add(index+1, elementListView.getSelectionModel().getSelectedItem());
+        elements.add((Element) elementListView.getSelectionModel().getSelectedItem());
+        
+        elementListView.getSelectionModel().select(index+1);
     }
 
     // Called when the user selects a group - if the group is 'None' the quantifier section will be disabled

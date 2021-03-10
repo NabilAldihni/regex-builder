@@ -180,6 +180,15 @@ public class MainWindowController {
         }
         refreshExpression();
     }
+    
+    // Duplicates the selected expression
+    public void pressedDuplicateExpression(ActionEvent actionEvent) {
+        int index = expressionListView.getSelectionModel().getSelectedIndex();
+        expressionListView.getItems().add(index+1, expressionListView.getSelectionModel().getSelectedItem());
+        expressions.add(expressionListView.getSelectionModel().getSelectedItem());
+    
+        expressionListView.getSelectionModel().select(index+1);
+    }
 
     public void pressedEditExpression(ActionEvent actionEvent) {
     }
