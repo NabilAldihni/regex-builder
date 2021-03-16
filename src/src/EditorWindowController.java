@@ -72,6 +72,14 @@ public class EditorWindowController {
         });
     }
     
+    public ListView getElementListView() {
+        return elementListView;
+    }
+    
+    public void setElementListView(ListView elementListView) {
+        this.elementListView = elementListView;
+    }
+    
     public ArrayList<Element> getElements() {
         return elements;
     }

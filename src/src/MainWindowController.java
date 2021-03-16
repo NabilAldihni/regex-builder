@@ -24,6 +24,7 @@ import javafx.scene.image.Image ;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.*;
 
 public class MainWindowController {
     // Non-FXML variables
@@ -190,7 +191,61 @@ public class MainWindowController {
         expressionListView.getSelectionModel().select(index+1);
     }
 
+    // Opens the editor window and loads the selected expression's data
     public void pressedEditExpression(ActionEvent actionEvent) {
+        // Stores the selected index so the created expression is added in the correct place
+        if (expressionListView.getSelectionModel().getSelectedIndex() == -1) {
+            selectedIndex = 0;
+        }
+        else {
+            selectedIndex = expressionListView.getSelectionModel().getSelectedIndex() + 1;
+        }
+        
+        Expression item = expressionListView.getSelectionModel().getSelectedItem();
+        expressions.remove(expressionListView.getSelectionModel().getSelectedItem());
+        expressionListView.getItems().remove(expressionListView.getSelectionModel().getSelectedItem());
+        
+        // Opens the Editor Window
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("src/editorWindow.fxml"));
+            Stage editorStage = new Stage();
+            editorStage.setTitle("Regex builder - Expression editor");
+            editorStage.setScene(new Scene(root));
+            // APPLICATION_MODAL disables this window while the other one is open
+            editorStage.initModality(Modality.APPLICATION_MODAL);
+            editorStage.setResizable(false);
+            editorStage.show();
+            
+            // Loads all the appropriate data into the editor window
+            EditorWindowController editorController = StageConfig.getEditorWindowController();
+            for (Element e: item.getElements()) {
+                editorController.getElements().add(e);
+                editorController.getElementListView().getItems().add(e);
+            }
+            
+            Quantifier q = item.getQuantifier();
+            String exactDigitPattern = "";
+            String rangeDigitPattern = "";
+            String minDigitPattern = "";
+            /*
+            if (q.getSymbol().equals("?")) {
+            
+            }
+            else if (q.getSymbol().equals("*")) {
+            
+            }
+            else if (q.getSymbol().equals("+")) {
+            
+            }
+            else if (true) {
+            
+            }
+            */
+        }
+        catch (IOException e){
+            System.out.println("Failed to create a new window");
+        }
     }
 
     // Updates the expression when the checkbox for first element is pressed
