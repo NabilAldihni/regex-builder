@@ -32,6 +32,18 @@ public class EditorWindowController {
     public TextField elementsCharOfField;
     public TextField elementsCharNotOfField;
     public ListView elementListView;
+    public RadioButton optNoCapGroup;
+    public RadioButton optCapGroup;
+    public RadioButton optNonCapGroup;
+    public RadioButton optPosLookahead;
+    public RadioButton optNegLookahead;
+    public RadioButton optOne;
+    public RadioButton opt0Or1;
+    public RadioButton opt0OrMore;
+    public RadioButton opt1OrMore;
+    public RadioButton optExactly;
+    public RadioButton optRange;
+    public RadioButton optMin;
     
     // Non-FXML variables
     private ArrayList<Element> elements;
@@ -70,6 +82,10 @@ public class EditorWindowController {
                 return cell;
             }
         });
+        
+        String selected = ((RadioButton) groupToggle.getSelectedToggle()).getText();
+    
+        quantifierPane.setDisable(selected.equals("None"));
     }
     
     public ListView getElementListView() {
@@ -86,6 +102,22 @@ public class EditorWindowController {
     
     public void setElements(ArrayList<Element> elements) {
         this.elements = elements;
+    }
+    
+    public Group getGroup() {
+        return group;
+    }
+    
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+    
+    public Quantifier getQuantifier() {
+        return quantifier;
+    }
+    
+    public void setQuantifier(Quantifier quantifier) {
+        this.quantifier = quantifier;
     }
     
     // Called every time a change is made to the expressions list. Updates the string in the textField
@@ -214,7 +246,7 @@ public class EditorWindowController {
 
     // Called when "Save" button is pressed
     // Collects all the selected data and creates an expression that is then added to the main window's list
-    public void saveExpressionPressed(ActionEvent actionEvent) {
+    public void pressedSaveExpression(ActionEvent actionEvent) {
         boolean errors = false;
 
         // Find selected group

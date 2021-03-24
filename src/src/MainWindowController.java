@@ -198,7 +198,7 @@ public class MainWindowController {
             selectedIndex = 0;
         }
         else {
-            selectedIndex = expressionListView.getSelectionModel().getSelectedIndex() + 1;
+            selectedIndex = expressionListView.getSelectionModel().getSelectedIndex();
         }
         
         Expression item = expressionListView.getSelectionModel().getSelectedItem();
@@ -224,24 +224,64 @@ public class MainWindowController {
                 editorController.getElementListView().getItems().add(e);
             }
             
+            // Takes the quantifier from the expression
             Quantifier q = item.getQuantifier();
-            String exactDigitPattern = "";
-            String rangeDigitPattern = "";
-            String minDigitPattern = "";
-            /*
-            if (q.getSymbol().equals("?")) {
+            editorController.setQuantifier(q);
             
+            // Creates patterns to match and find the numbers, if they exist
+            Pattern exactDigitPattern = Pattern.compile("\\{(\\d+)\\}");
+            Pattern rangeDigitPattern = Pattern.compile("\\{(\\d+),(\\d+)\\}");
+            Pattern minDigitPattern = Pattern.compile("\\{(\\d+),\\}");
+            Matcher mExactDigit = exactDigitPattern.matcher(q.getSymbol());
+            Matcher mRangeDigit = rangeDigitPattern.matcher(q.getSymbol());
+            Matcher mMinDigit = minDigitPattern.matcher(q.getSymbol());
+            
+            // Loads the appropriate data into the quantifier radio buttons and text fields
+            if (q.getSymbol().equals("?")) {
+                editorController.opt0Or1.setSelected(true);
             }
             else if (q.getSymbol().equals("*")) {
-            
+                editorController.opt0OrMore.setSelected(true);
             }
             else if (q.getSymbol().equals("+")) {
-            
+                editorController.opt1OrMore.setSelected(true);
             }
-            else if (true) {
-            
+            else if (mExactDigit.matches()) {
+                editorController.optExactly.setSelected(true);
+                editorController.quantifierExactlyField.setText(mExactDigit.group(1));
             }
-            */
+            else if (mRangeDigit.matches()) {
+                editorController.optRange.setSelected(true);
+                editorController.quantifierRangeFirstField.setText(mRangeDigit.group(1));
+                editorController.quantifierRangeLastField.setText(mRangeDigit.group(2));
+            }
+            else if (mMinDigit.matches()) {
+                editorController.optMin.setSelected(true);
+                editorController.quantifierMinField.setText(mMinDigit.group(1));
+            }
+            else {
+                editorController.optOne.setSelected(true);
+            }
+            
+            // Loads the appropriate data into the capture group radio buttons
+            Group g = item.getGroup();
+            editorController.setGroup(g);
+            if (g.getStartSymbol().equals("(")) {
+                editorController.optCapGroup.setSelected(true);
+                editorController.quantifierPane.setDisable(false);
+            }
+            else if (g.getStartSymbol().equals("(?:")) {
+                editorController.optNonCapGroup.setSelected(true);
+                editorController.quantifierPane.setDisable(false);
+            }
+            else if (g.getStartSymbol().equals("(?=")) {
+                editorController.optPosLookahead.setSelected(true);
+                editorController.quantifierPane.setDisable(false);
+            }
+            else if (g.getStartSymbol().equals("(?!")) {
+                editorController.optNegLookahead.setSelected(true);
+                editorController.quantifierPane.setDisable(false);
+            }
         }
         catch (IOException e){
             System.out.println("Failed to create a new window");

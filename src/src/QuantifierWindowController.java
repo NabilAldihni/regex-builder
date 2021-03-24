@@ -20,12 +20,13 @@ public class QuantifierWindowController {
     // Non-FXML variables
     private Quantifier quantifier;
     private Element element;
-    EditorWindowController editorController = StageConfig.getEditorWindowController();
+    private EditorWindowController editorController;
     
     @FXML
     // Method called by FXML when the window is started
     public void initialize() {
         StageConfig.setQuantifierWindowController(this);
+        editorController = StageConfig.getEditorWindowController();
         quantifier = new Quantifier();
     }
     
