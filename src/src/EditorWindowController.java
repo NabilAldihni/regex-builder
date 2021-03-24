@@ -262,6 +262,9 @@ public class EditorWindowController {
         // Populates the properties of the group according to selection
         switch (selectedGroup) {
             case "none":
+                group.setDesc("");
+                group.setStartSymbol("");
+                group.setEndSymbol("");
                 break;
             case "capGroup":
                 group.setDesc(selectedGroup);
@@ -289,7 +292,7 @@ public class EditorWindowController {
         }
 
         // Find selected quantifier
-        if (!selectedGroup.equals("None")) {
+        if (!selectedGroup.equals("none")) {
             String selectedQuantifier = "";
             try {
                 selectedQuantifier = ((RadioButton) quantifierToggle.getSelectedToggle()).getUserData().toString();
@@ -301,6 +304,8 @@ public class EditorWindowController {
             // Populates the properties of the quantifier according to the selection
             switch (selectedQuantifier) {
                 case "1":
+                    quantifier.setDesc("");
+                    quantifier.setSymbol("");
                     break;
                 case "01":
                     quantifier.setDesc("0 or 1");
@@ -352,6 +357,10 @@ public class EditorWindowController {
                     System.out.println("Error while finding selected quantifier");
                     errors = true;
             }
+        }
+        else {
+            quantifier.setSymbol("");
+            quantifier.setDesc("");
         }
 
         if (!errors) {
