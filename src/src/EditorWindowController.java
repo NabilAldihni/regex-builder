@@ -13,6 +13,8 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EditorWindowController {
     // FXML variables
@@ -49,6 +51,7 @@ public class EditorWindowController {
     private ArrayList<Element> elements;
     private Group group;
     private Quantifier quantifier;
+    private int selectedIndex;
 
     @FXML
     // Method called by FXML when the window is started
@@ -62,6 +65,7 @@ public class EditorWindowController {
         elements = new ArrayList<Element>();
         group = new Group();
         quantifier = new Quantifier();
+        selectedIndex = 0;
     
         // Cell Factory to allow the ListView to store Element objects while displaying only a string of the expression
         elementListView.setCellFactory(new Callback<ListView<Element>, ListCell<Element>>() {
@@ -114,6 +118,14 @@ public class EditorWindowController {
     
     public Quantifier getQuantifier() {
         return quantifier;
+    }
+    
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+    
+    public void setSelectedIndex(int selectedIndex) {
+        this.selectedIndex = selectedIndex;
     }
     
     public void setQuantifier(Quantifier quantifier) {
@@ -182,6 +194,74 @@ public class EditorWindowController {
 
     // Allows user to edit the element's quantifier
     public void pressedEditElement(ActionEvent actionEvent) {
+        // Stores the selected index so the created element is added in the correct place
+        if (elementListView.getSelectionModel().getSelectedIndex() == -1) {
+            selectedIndex = 0;
+        }
+        else {
+            selectedIndex = elementListView.getSelectionModel().getSelectedIndex();
+        }
+        
+        Element item = (Element) elementListView.getSelectionModel().getSelectedItem();
+        elements.remove(elementListView.getSelectionModel().getSelectedItem());
+        elementListView.getItems().remove(elementListView.getSelectionModel().getSelectedItem());
+        
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("src/quantifierWindow.fxml"));
+            Stage quantifierStage = new Stage();
+            quantifierStage.setTitle("Regex builder - Select Quantifier");
+            quantifierStage.setScene(new Scene(root));
+            quantifierStage.initModality(Modality.APPLICATION_MODAL);
+            quantifierStage.setResizable(false);
+            quantifierStage.show();
+        
+            QuantifierWindowController quantifierController = StageConfig.getQuantifierWindowController();
+            quantifierController.setElement(item);
+            
+            // Takes the quantifier from the expression
+            Quantifier q = item.getQuantifier();
+            quantifierController.setQuantifier(q);
+    
+            // Creates patterns to match and find the numbers, if they exist
+            Pattern exactDigitPattern = Pattern.compile("\\{(\\d+)\\}");
+            Pattern rangeDigitPattern = Pattern.compile("\\{(\\d+),(\\d+)\\}");
+            Pattern minDigitPattern = Pattern.compile("\\{(\\d+),\\}");
+            Matcher mExactDigit = exactDigitPattern.matcher(q.getSymbol());
+            Matcher mRangeDigit = rangeDigitPattern.matcher(q.getSymbol());
+            Matcher mMinDigit = minDigitPattern.matcher(q.getSymbol());
+    
+            // Loads the appropriate data into the quantifier radio buttons and text fields
+            if (q.getSymbol().equals("?")) {
+                quantifierController.opt0Or1.setSelected(true);
+            }
+            else if (q.getSymbol().equals("*")) {
+                quantifierController.opt0OrMore.setSelected(true);
+            }
+            else if (q.getSymbol().equals("+")) {
+                quantifierController.opt1OrMore.setSelected(true);
+            }
+            else if (mExactDigit.matches()) {
+                quantifierController.optExactly.setSelected(true);
+                quantifierController.quantifierExactlyField.setText(mExactDigit.group(1));
+            }
+            else if (mRangeDigit.matches()) {
+                quantifierController.optRange.setSelected(true);
+                quantifierController.quantifierRangeFirstField.setText(mRangeDigit.group(1));
+                quantifierController.quantifierRangeLastField.setText(mRangeDigit.group(2));
+            }
+            else if (mMinDigit.matches()) {
+                quantifierController.optMin.setSelected(true);
+                quantifierController.quantifierMinField.setText(mMinDigit.group(1));
+            }
+            else {
+                quantifierController.optOne.setSelected(true);
+            }
+    
+        }
+        catch (IOException exception){
+            System.out.println("Failed to create a new window");
+        }
     }
     
     // Duplicates selected element and adds it below
@@ -204,6 +284,14 @@ public class EditorWindowController {
     public void pressedAddElement(ActionEvent actionEvent) {
         String option = ((Button)actionEvent.getSource()).getUserData().toString();
         Element e = new Element();
+        
+        // Stores the selected index so the created element is added in the correct place
+        if (elementListView.getSelectionModel().getSelectedIndex() == -1) {
+            selectedIndex = 0;
+        }
+        else {
+            selectedIndex = elementListView.getSelectionModel().getSelectedIndex() + 1;
+        }
 
         if (option.equals("exactly")) {
             e.setDesc("Matches '" + matchesExactlyField.getText() + "' exactly");

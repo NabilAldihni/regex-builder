@@ -3,9 +3,7 @@ package src;
 /**
  *  To-do:
  *      - Escape appropriate characters
- *      - Add all elements that can be added, validate them and make listView work
- *          - Validation for elements with textfields
- *      - Included above: make controls for listView work
+ *      - Make refreshing expression in the editorwindow work properly
  *      - Add proper error dialog boxes to editor window
  *      - Make the listview properly display descriptions (with quantifiers) instead of symbols
  *

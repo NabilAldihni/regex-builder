@@ -16,6 +16,13 @@ public class QuantifierWindowController {
     public TextField quantifierRangeLastField;
     public TextField quantifierMinField;
     public Button applyQuantifierBtn;
+    public RadioButton optOne;
+    public RadioButton opt0OrMore;
+    public RadioButton opt1OrMore;
+    public RadioButton optExactly;
+    public RadioButton optRange;
+    public RadioButton optMin;
+    public RadioButton opt0Or1;
     
     // Non-FXML variables
     private Quantifier quantifier;
@@ -61,6 +68,8 @@ public class QuantifierWindowController {
         // Populates the properties of the quantifier according to the selection
         switch (selectedQuantifier) {
             case "1":
+                quantifier.setDesc("");
+                quantifier.setSymbol("");
                 break;
             case "01":
                 quantifier.setDesc("0 or 1");
@@ -114,11 +123,17 @@ public class QuantifierWindowController {
         }
     
         if (!errors) {
+            int index = editorController.getSelectedIndex();
+            // Adds created element to its appropriate place in the editor window
             element.setQuantifier(quantifier);
-            editorController.elementListView.getItems().add(element);
-            editorController.getElements().add(element);
+            editorController.elementListView.getItems().add(index, element);
+            editorController.getElements().add(index, element);
             editorController.refreshExpression();
             
+            // Selects the created element in the listview
+            editorController.elementListView.getSelectionModel().select(index);
+            
+            // Closes window
             Stage stage = (Stage) applyQuantifierBtn.getScene().getWindow();
             stage.close();
         }

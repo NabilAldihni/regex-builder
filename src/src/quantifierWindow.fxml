@@ -12,17 +12,17 @@
 <Pane prefHeight="320.0" prefWidth="230.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.QuantifierWindowController">
    <children>
       <Label layoutX="20.0" layoutY="20.0" text="Quantifier (this element)" textFill="WHITE" underline="true" />
-      <RadioButton layoutX="30.0" layoutY="50.0" mnemonicParsing="false" selected="true" text="1" textFill="WHITE" userData="1">
+      <RadioButton fx:id="optOne" layoutX="30.0" layoutY="50.0" mnemonicParsing="false" selected="true" text="1" textFill="WHITE" userData="1">
          <toggleGroup>
             <ToggleGroup fx:id="quantifierGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="30.0" layoutY="80.0" mnemonicParsing="false" text="0 or 1" textFill="WHITE" toggleGroup="$quantifierGroup" userData="01" />
-      <RadioButton layoutX="30.0" layoutY="110.0" mnemonicParsing="false" text="0 or more" textFill="WHITE" toggleGroup="$quantifierGroup" userData="0+" />
-      <RadioButton layoutX="30.0" layoutY="140.0" mnemonicParsing="false" text="1 or more" textFill="WHITE" toggleGroup="$quantifierGroup" userData="1+" />
-      <RadioButton layoutX="30.0" layoutY="170.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="66.0" text="Exactly" textFill="WHITE" toggleGroup="$quantifierGroup" userData="exact" />
-      <RadioButton layoutX="30.0" layoutY="200.0" mnemonicParsing="false" text="From                to" textFill="WHITE" toggleGroup="$quantifierGroup" userData="range" />
-      <RadioButton layoutX="30.0" layoutY="230.0" mnemonicParsing="false" text="             or more" textFill="WHITE" toggleGroup="$quantifierGroup" userData="minAmount" />
+      <RadioButton fx:id="opt0Or1" layoutX="30.0" layoutY="80.0" mnemonicParsing="false" text="0 or 1" textFill="WHITE" toggleGroup="$quantifierGroup" userData="01" />
+      <RadioButton fx:id="opt0OrMore" layoutX="30.0" layoutY="110.0" mnemonicParsing="false" text="0 or more" textFill="WHITE" toggleGroup="$quantifierGroup" userData="0+" />
+      <RadioButton fx:id="opt1OrMore" layoutX="30.0" layoutY="140.0" mnemonicParsing="false" text="1 or more" textFill="WHITE" toggleGroup="$quantifierGroup" userData="1+" />
+      <RadioButton fx:id="optExactly" layoutX="30.0" layoutY="170.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="66.0" text="Exactly" textFill="WHITE" toggleGroup="$quantifierGroup" userData="exact" />
+      <RadioButton fx:id="optRange" layoutX="30.0" layoutY="200.0" mnemonicParsing="false" text="From                to" textFill="WHITE" toggleGroup="$quantifierGroup" userData="range" />
+      <RadioButton fx:id="optMin" layoutX="30.0" layoutY="230.0" mnemonicParsing="false" text="             or more" textFill="WHITE" toggleGroup="$quantifierGroup" userData="minAmount" />
       <Button fx:id="applyQuantifierBtn" contentDisplay="CENTER" defaultButton="true" layoutX="92.0" layoutY="272.0" mnemonicParsing="false" onAction="#pressedApplyBtn" style="-fx-background-color: white; -fx-background-radius: 0;" text="Apply" textAlignment="CENTER" />
       <TextField fx:id="quantifierExactlyField" layoutX="95.0" layoutY="169.0" minHeight="-Infinity" prefHeight="21.0" prefWidth="30.0">
          <font>
