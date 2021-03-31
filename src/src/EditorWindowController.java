@@ -137,10 +137,14 @@ public class EditorWindowController {
         expressionField.setText("");
         String fullExp = "";
         
+        fullExp += group.getStartSymbol();
+        
         for (Element e: elements) {
             fullExp += e.getSymbol();
             fullExp += e.getQuantifier().getSymbol();
         }
+        
+        fullExp += group.getEndSymbol();
         
         expressionField.setText(fullExp);
         
@@ -271,6 +275,7 @@ public class EditorWindowController {
         elements.add((Element) elementListView.getSelectionModel().getSelectedItem());
         
         elementListView.getSelectionModel().select(index+1);
+        refreshExpression();
     }
 
     // Called when the user selects a group - if the group is 'None' the quantifier section will be disabled
@@ -278,6 +283,7 @@ public class EditorWindowController {
         String selected = ((RadioButton) groupToggle.getSelectedToggle()).getText();
 
         quantifierPane.setDisable(selected.equals("None"));
+        refreshExpression();
     }
 
     // Called when any element is added - opens quantifier window
