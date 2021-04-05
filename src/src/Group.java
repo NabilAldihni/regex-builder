@@ -18,6 +18,10 @@ public class Group {
         this.startSymbol = startSymbol;
         this.endSymbol = endSymbol;
     }
+    
+    public Group(Group g) {
+        this(g.getDesc(), g.getStartSymbol(), g.getEndSymbol());
+    }
 
     public String getDesc() {
         return desc;

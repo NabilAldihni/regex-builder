@@ -15,6 +15,10 @@ public class Quantifier {
         this.desc = desc;
         this.symbol = symbol;
     }
+    
+   public Quantifier(Quantifier q) {
+        this(q.getDesc(), q.getSymbol());
+   }
 
     public String getDesc() {
         return desc;

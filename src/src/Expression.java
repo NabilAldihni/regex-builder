@@ -13,6 +13,15 @@ public class Expression {
         this.quantifier = quantifier;
         this.group = group;
     }
+    
+    public Expression(Expression e) {
+        elements = new ArrayList<Element>();
+        for (Element element: e.getElements()) {
+            this.elements.add(new Element(element));
+        }
+        this.quantifier = new Quantifier(e.getQuantifier());
+        this.group = new Group(e.getGroup());
+    }
 
     public ArrayList<Element> getElements() {
         return elements;

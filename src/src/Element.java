@@ -18,6 +18,10 @@ public class Element {
         this.symbol = symbol;
         this.quantifier = quantifier;
     }
+    
+    public Element(Element e) {
+        this(e.getDesc(), e.getSymbol(), new Quantifier(e.getQuantifier()));
+    }
 
     public String getDesc() {
         return desc;

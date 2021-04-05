@@ -271,8 +271,9 @@ public class EditorWindowController {
     // Duplicates selected element and adds it below
     public void pressedDuplicateElement(ActionEvent actionEvent) {
         int index = elementListView.getSelectionModel().getSelectedIndex();
-        elementListView.getItems().add(index+1, elementListView.getSelectionModel().getSelectedItem());
-        elements.add((Element) elementListView.getSelectionModel().getSelectedItem());
+        Element e = new Element((Element) elementListView.getSelectionModel().getSelectedItem());
+        elementListView.getItems().add(index+1, e);
+        elements.add(index+1, e);
         
         elementListView.getSelectionModel().select(index+1);
         refreshExpression();
@@ -289,7 +290,8 @@ public class EditorWindowController {
     // Called when any element is added - opens quantifier window
     public void pressedAddElement(ActionEvent actionEvent) {
         String option = ((Button)actionEvent.getSource()).getUserData().toString();
-        Element e = new Element();
+        Element element = new Element();
+        boolean errors = false;
         
         // Stores the selected index so the created element is added in the correct place
         if (elementListView.getSelectionModel().getSelectedIndex() == -1) {
@@ -300,41 +302,48 @@ public class EditorWindowController {
         }
 
         if (option.equals("exactly")) {
-            e.setDesc("Matches '" + matchesExactlyField.getText() + "' exactly");
-            e.setSymbol("(?:" + matchesExactlyField.getText() + ")");
+            element.setDesc("Matches '" + matchesExactlyField.getText() + "' exactly");
+            element.setSymbol("(?:" + matchesExactlyField.getText() + ")");
         }
         else if (option.equals("digitRange")) {
-            e.setDesc("Digit from " + elementRangeMinField.getText() + " to " + elementRangeMaxField.getText());
-            e.setSymbol("[" + elementRangeMinField.getText() + "-" + elementRangeMaxField.getText() + "]");
+            try {
+                element.setDesc("Digit from " + elementRangeMinField.getText() + " to " + elementRangeMaxField.getText());
+                element.setSymbol("[" + elementRangeMinField.getText() + "-" + elementRangeMaxField.getText() + "]");
+            }
+            catch (Exception e) {
+                System.out.println("Please fill in the appropriate quantifier field with a valid integer");
+                errors = true;
+            }
         }
         else if (option.equals("anyCharOf")) {
-            e.setDesc("Any char of '" + elementsCharOfField.getText() + "'");
-            e.setSymbol("[" + elementsCharOfField.getText() + "]");
+            element.setDesc("Any char of '" + elementsCharOfField.getText() + "'");
+            element.setSymbol("[" + elementsCharOfField.getText() + "]");
         }
         else if (option.equals("anyCharNotOf")) {
-            e.setDesc("Any char not of '" + elementsCharNotOfField.getText() + "'");
-            e.setSymbol("[^" + elementsCharNotOfField.getText() + "]");
+            element.setDesc("Any char not of '" + elementsCharNotOfField.getText() + "'");
+            element.setSymbol("[^" + elementsCharNotOfField.getText() + "]");
         }
         else {
-            e.setDesc("Other");
-            e.setSymbol(option);
+            element.setDesc("Other");
+            element.setSymbol(option);
         }
 
-        try {
-            Parent root;
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("src/quantifierWindow.fxml"));
-            Stage quantifierStage = new Stage();
-            quantifierStage.setTitle("Regex builder - Select Quantifier");
-            quantifierStage.setScene(new Scene(root));
-            quantifierStage.initModality(Modality.APPLICATION_MODAL);
-            quantifierStage.setResizable(false);
-            quantifierStage.show();
-            
-            QuantifierWindowController quantifierController = StageConfig.getQuantifierWindowController();
-            quantifierController.setElement(e);
-        }
-        catch (IOException exception){
-            System.out.println("Failed to create a new window");
+        if (!errors) {
+            try {
+                Parent root;
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("src/quantifierWindow.fxml"));
+                Stage quantifierStage = new Stage();
+                quantifierStage.setTitle("Regex builder - Select Quantifier");
+                quantifierStage.setScene(new Scene(root));
+                quantifierStage.initModality(Modality.APPLICATION_MODAL);
+                quantifierStage.setResizable(false);
+                quantifierStage.show();
+    
+                QuantifierWindowController quantifierController = StageConfig.getQuantifierWindowController();
+                quantifierController.setElement(element);
+            } catch (IOException exception) {
+                System.out.println("Failed to create a new window");
+            }
         }
     }
 
