@@ -3,7 +3,6 @@ package src;
 /**
  *  To-do:
  *      - Escape appropriate characters
- *      - Make refreshing expression in the editorwindow work properly
  *      - Add proper error dialog boxes to editor window
  *      - Make the listview properly display descriptions (with quantifiers) instead of symbols
  *
