@@ -16,6 +16,7 @@ public class Quantifier {
         this.symbol = symbol;
     }
     
+    // Class constructor used for deep copies
    public Quantifier(Quantifier q) {
         this(q.getDesc(), q.getSymbol());
    }

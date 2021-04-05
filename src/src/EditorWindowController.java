@@ -271,6 +271,8 @@ public class EditorWindowController {
     // Duplicates selected element and adds it below
     public void pressedDuplicateElement(ActionEvent actionEvent) {
         int index = elementListView.getSelectionModel().getSelectedIndex();
+    
+        // Creates a deep copy of the selected object (by value)
         Element e = new Element((Element) elementListView.getSelectionModel().getSelectedItem());
         elementListView.getItems().add(index+1, e);
         elements.add(index+1, e);
@@ -307,6 +309,8 @@ public class EditorWindowController {
         }
         else if (option.equals("digitRange")) {
             try {
+                int n1 = Integer.parseInt(elementRangeMinField.getText());
+                int n2 = Integer.parseInt(elementRangeMaxField.getText());
                 element.setDesc("Digit from " + elementRangeMinField.getText() + " to " + elementRangeMaxField.getText());
                 element.setSymbol("[" + elementRangeMinField.getText() + "-" + elementRangeMaxField.getText() + "]");
             }

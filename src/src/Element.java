@@ -19,6 +19,7 @@ public class Element {
         this.quantifier = quantifier;
     }
     
+    // Class constructor used for deep copies
     public Element(Element e) {
         this(e.getDesc(), e.getSymbol(), new Quantifier(e.getQuantifier()));
     }

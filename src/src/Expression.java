@@ -14,6 +14,7 @@ public class Expression {
         this.group = group;
     }
     
+    // Class constructor used for deep copies
     public Expression(Expression e) {
         elements = new ArrayList<Element>();
         for (Element element: e.getElements()) {

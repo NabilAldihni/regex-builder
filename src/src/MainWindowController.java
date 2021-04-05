@@ -185,6 +185,8 @@ public class MainWindowController {
     // Duplicates the selected expression
     public void pressedDuplicateExpression(ActionEvent actionEvent) {
         int index = expressionListView.getSelectionModel().getSelectedIndex();
+        
+        // Creates a deep copy of the selected object (by value)
         Expression e = new Expression((Expression) expressionListView.getSelectionModel().getSelectedItem());
         expressionListView.getItems().add(index+1, e);
         expressions.add(index+1, e);

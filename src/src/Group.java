@@ -19,6 +19,7 @@ public class Group {
         this.endSymbol = endSymbol;
     }
     
+    // Class constructor used for deep copies
     public Group(Group g) {
         this(g.getDesc(), g.getStartSymbol(), g.getEndSymbol());
     }
