@@ -287,9 +287,55 @@ public class EditorWindowController {
 
     // Called when the user selects a group - if the group is 'None' the quantifier section will be disabled
     public void selectedGroup(ActionEvent actionEvent) {
-        String selected = ((RadioButton) groupToggle.getSelectedToggle()).getText();
-
-        quantifierPane.setDisable(selected.equals("None"));
+        // Find selected group
+        String selectedGroup = "";
+        try {
+            selectedGroup = ((RadioButton) groupToggle.getSelectedToggle()).getUserData().toString();
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("There was an error");
+            alert.setContentText("No group option was selected");
+            alert.showAndWait();
+        }
+    
+        // Populates the properties of the group according to selection
+        switch (selectedGroup) {
+            case "none":
+                group.setDesc("");
+                group.setStartSymbol("");
+                group.setEndSymbol("");
+                break;
+            case "capGroup":
+                group.setDesc(selectedGroup);
+                group.setStartSymbol("(");
+                group.setEndSymbol(")");
+                break;
+            case "nonCapGroup":
+                group.setDesc(selectedGroup);
+                group.setStartSymbol("(?:");
+                group.setEndSymbol(")");
+                break;
+            case "posLook":
+                group.setDesc(selectedGroup);
+                group.setStartSymbol("(?=");
+                group.setEndSymbol(")");
+                break;
+            case "negLook":
+                group.setDesc(selectedGroup);
+                group.setStartSymbol("(?!");
+                group.setEndSymbol(")");
+                break;
+            default:
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("There was an error");
+                alert.setContentText("There was an error with the selected group");
+                alert.showAndWait();
+        }
+        
+        quantifierPane.setDisable(selectedGroup.equals("none"));
         refreshExpression();
     }
 
@@ -459,42 +505,6 @@ public class EditorWindowController {
             alert.setContentText("No group option was selected");
             alert.showAndWait();
             errors = true;
-        }
-
-        // Populates the properties of the group according to selection
-        switch (selectedGroup) {
-            case "none":
-                group.setDesc("");
-                group.setStartSymbol("");
-                group.setEndSymbol("");
-                break;
-            case "capGroup":
-                group.setDesc(selectedGroup);
-                group.setStartSymbol("(");
-                group.setEndSymbol(")");
-                break;
-            case "nonCapGroup":
-                group.setDesc(selectedGroup);
-                group.setStartSymbol("(?:");
-                group.setEndSymbol(")");
-                break;
-            case "posLook":
-                group.setDesc(selectedGroup);
-                group.setStartSymbol("(?=");
-                group.setEndSymbol(")");
-                break;
-            case "negLook":
-                group.setDesc(selectedGroup);
-                group.setStartSymbol("(?!");
-                group.setEndSymbol(")");
-                break;
-            default:
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("There was an error");
-                alert.setContentText("There was an error with the selected group");
-                alert.showAndWait();
-                errors = true;
         }
 
         // Find selected quantifier
