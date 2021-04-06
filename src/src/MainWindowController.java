@@ -62,10 +62,18 @@ public class MainWindowController {
                         super.updateItem(e, empty);
                         String fullDesc = "";
                         if (e != null) {
-                            for (Element element : e.getElements()) {
-                                fullDesc += element.getDesc();
-                                fullDesc += " (" + element.getQuantifier().getDesc() + ")\n";
+                            if (e.getGroup().getDesc().equals("")){
+                                fullDesc += "Not a capture group\n";
                             }
+                            else {
+                                fullDesc += e.getGroup().getDesc() + " (" + e.getQuantifier().getDesc().toLowerCase() + ") containing:\n";
+                            }
+                            
+                            for (Element element : e.getElements()) {
+                                fullDesc += "\t" + element.getDesc() + "\n";
+                                fullDesc += "\t\t" + element.getQuantifier().getDesc() + "\n";
+                            }
+                            
                             setText(fullDesc);
                         }
                         else {
@@ -295,6 +303,7 @@ public class MainWindowController {
                 editorController.optNegLookahead.setSelected(true);
                 editorController.quantifierPane.setDisable(false);
             }
+            editorController.refreshExpression();
         }
         catch (IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);

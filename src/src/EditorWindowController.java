@@ -75,8 +75,12 @@ public class EditorWindowController {
                     @Override
                     protected void updateItem(Element e, boolean empty){
                         super.updateItem(e, empty);
+                        String fullDesc = "";
                         if (e != null) {
-                            setText(e.getDesc() + " (" + e.getQuantifier().getDesc() + ")");
+                            fullDesc += e.getDesc() + "\n";
+                            fullDesc += "\t" + e.getQuantifier().getDesc() + "\n";
+                            
+                            setText(fullDesc);
                         }
                         else {
                             setText("");
@@ -308,22 +312,22 @@ public class EditorWindowController {
                 group.setEndSymbol("");
                 break;
             case "capGroup":
-                group.setDesc(selectedGroup);
+                group.setDesc("Capture group");
                 group.setStartSymbol("(");
                 group.setEndSymbol(")");
                 break;
             case "nonCapGroup":
-                group.setDesc(selectedGroup);
+                group.setDesc("Non-capture group");
                 group.setStartSymbol("(?:");
                 group.setEndSymbol(")");
                 break;
             case "posLook":
-                group.setDesc(selectedGroup);
+                group.setDesc("Positive lookahead");
                 group.setStartSymbol("(?=");
                 group.setEndSymbol(")");
                 break;
             case "negLook":
-                group.setDesc(selectedGroup);
+                group.setDesc("Negative lookahead");
                 group.setStartSymbol("(?!");
                 group.setEndSymbol(")");
                 break;
@@ -569,7 +573,7 @@ public class EditorWindowController {
             // Populates the properties of the quantifier according to the selection
             switch (selectedQuantifier) {
                 case "1":
-                    quantifier.setDesc("");
+                    quantifier.setDesc("One");
                     quantifier.setSymbol("");
                     break;
                 case "01":
@@ -603,11 +607,11 @@ public class EditorWindowController {
                     try {
                         int from = Integer.parseInt(quantifierRangeFirstField.getText());
                         int to = Integer.parseInt(quantifierRangeLastField.getText());
-                        if (from > 9 || from < 0 || to > 9 || to < 0) {
+                        if (from < 0 || to < 0) {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("Invalid input");
                             alert.setHeaderText("There was an error");
-                            alert.setContentText("The desired quantifier range digits must be from 1 to 9");
+                            alert.setContentText("The desired quantifier range digits must be positive");
                             alert.showAndWait();
                             errors = true;
                         }
@@ -620,7 +624,7 @@ public class EditorWindowController {
                             errors = true;
                         }
                         else {
-                            quantifier.setDesc("From " + from + " to " + to + " (inclusive)");
+                            quantifier.setDesc("From " + from + " to " + to + " inclusive");
                             quantifier.setSymbol("{" + from + "," + to + "}");
                         }
                     }

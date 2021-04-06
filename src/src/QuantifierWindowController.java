@@ -69,7 +69,7 @@ public class QuantifierWindowController {
         // Populates the properties of the quantifier according to the selection
         switch (selectedQuantifier) {
             case "1":
-                quantifier.setDesc("");
+                quantifier.setDesc("One");
                 quantifier.setSymbol("");
                 break;
             case "01":
@@ -103,11 +103,11 @@ public class QuantifierWindowController {
                 try {
                     int from = Integer.parseInt(quantifierRangeFirstField.getText());
                     int to = Integer.parseInt(quantifierRangeLastField.getText());
-                    if (from > 9 || from < 0 || to > 9 || to < 0) {
+                    if (from < 0 || to < 0) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Invalid input");
                         alert.setHeaderText("There was an error");
-                        alert.setContentText("The desired quantifier range digits must be from 1 to 9");
+                        alert.setContentText("The desired quantifier range digits must be positive");
                         alert.showAndWait();
                         errors = true;
                     }
@@ -120,7 +120,7 @@ public class QuantifierWindowController {
                         errors = true;
                     }
                     else {
-                        quantifier.setDesc("From " + from + " to " + to + " (inclusive)");
+                        quantifier.setDesc("From " + from + " to " + to + " inclusive");
                         quantifier.setSymbol("{" + from + "," + to + "}");
                     }
                 }
