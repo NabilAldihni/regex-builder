@@ -60,8 +60,13 @@ public class MainWindowController {
                     @Override
                     protected void updateItem(Expression e, boolean empty){
                         super.updateItem(e, empty);
+                        String fullDesc = "";
                         if (e != null) {
-                            setText(e.compileExpression());
+                            for (Element element : e.getElements()) {
+                                fullDesc += element.getDesc();
+                                fullDesc += " (" + element.getQuantifier().getDesc() + ")\n";
+                            }
+                            setText(fullDesc);
                         }
                         else {
                             setText("");

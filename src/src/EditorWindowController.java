@@ -76,7 +76,7 @@ public class EditorWindowController {
                     protected void updateItem(Element e, boolean empty){
                         super.updateItem(e, empty);
                         if (e != null) {
-                            setText(e.getSymbol() + e.getQuantifier().getSymbol());
+                            setText(e.getDesc() + " (" + e.getQuantifier().getDesc() + ")");
                         }
                         else {
                             setText("");
@@ -466,8 +466,48 @@ public class EditorWindowController {
             }
         }
         else {
-            element.setDesc("Other");
-            element.setSymbol(option);
+            switch (option) {
+                case ".":
+                    element.setDesc("Any character (except newline)");
+                    element.setSymbol(option);
+                    break;
+                case "[\\s\\S]":
+                    element.setDesc("Any character (including newline)");
+                    element.setSymbol(option);
+                    break;
+                case "[a-z]":
+                    element.setDesc("Any lowercase letter");
+                    element.setSymbol(option);
+                    break;
+                case "[A-Z]":
+                    element.setDesc("Any uppercase letter");
+                    element.setSymbol(option);
+                    break;
+                case "\\w":
+                    element.setDesc("Word (alphanumeric or underscore)");
+                    element.setSymbol(option);
+                    break;
+                case "\\W":
+                    element.setDesc("Not a word");
+                    element.setSymbol(option);
+                    break;
+                case "\\D":
+                    element.setDesc("Not a digit");
+                    element.setSymbol(option);
+                    break;
+                case "\\s":
+                    element.setDesc("Whitespace");
+                    element.setSymbol(option);
+                    break;
+                case "\\S":
+                    element.setDesc("Not whitespace");
+                    element.setSymbol(option);
+                    break;
+                default:
+                    element.setDesc("Other");
+                    element.setSymbol("");
+                    break;
+            }
         }
 
         if (!errors) {
