@@ -304,6 +304,17 @@ public class EditorWindowController {
         }
 
         if (option.equals("exactly")) {
+            String toMatch = matchesExactlyField.getText();
+            for (int i=0; i<toMatch.length(); i++) {
+                String first = toMatch.substring(0, i);
+                String last = toMatch.substring(i, toMatch.length());
+                char c = toMatch.charAt(i);
+                if (c == '+' || c == '*' || c == '?' || c == '^' || c == '$' || c == '\\' || c == '.' || c == '['
+                    || c == ']' || c == '{' || c == '}' || c == '(' || c == ')' || c == '|' || c == '/') {
+                    toMatch = first + "\\" + last;
+                    i++;
+                }
+            }
             element.setDesc("Matches '" + matchesExactlyField.getText() + "' exactly");
             element.setSymbol("(?:" + matchesExactlyField.getText() + ")");
         }
@@ -320,10 +331,30 @@ public class EditorWindowController {
             }
         }
         else if (option.equals("anyCharOf")) {
+            String toMatch = elementsCharOfField.getText();
+            for (int i=0; i<toMatch.length(); i++) {
+                String first = toMatch.substring(0, i);
+                String last = toMatch.substring(i, toMatch.length());
+                char c = toMatch.charAt(i);
+                if (c == '\\' || c == '-' || c == ']') {
+                    toMatch = first + "\\" + last;
+                    i++;
+                }
+            }
             element.setDesc("Any char of '" + elementsCharOfField.getText() + "'");
             element.setSymbol("[" + elementsCharOfField.getText() + "]");
         }
         else if (option.equals("anyCharNotOf")) {
+            String toMatch = elementsCharNotOfField.getText();
+            for (int i=0; i<toMatch.length(); i++) {
+                String first = toMatch.substring(0, i);
+                String last = toMatch.substring(i, toMatch.length());
+                char c = toMatch.charAt(i);
+                if (c == '\\' || c == '-' || c == ']') {
+                    toMatch = first + "\\" + last;
+                    i++;
+                }
+            }
             element.setDesc("Any char not of '" + elementsCharNotOfField.getText() + "'");
             element.setSymbol("[^" + elementsCharNotOfField.getText() + "]");
         }
