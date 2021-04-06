@@ -2,10 +2,7 @@ package src;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class QuantifierWindowController {
@@ -61,7 +58,11 @@ public class QuantifierWindowController {
         try {
             selectedQuantifier = ((RadioButton) quantifierGroup.getSelectedToggle()).getUserData().toString();
         } catch (Exception e) {
-            System.out.println("There was no quantifier option selected!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("There was an error");
+            alert.setContentText("No quantifier option was selected");
+            alert.showAndWait();
             errors = true;
         }
     
@@ -90,7 +91,11 @@ public class QuantifierWindowController {
                     quantifier.setSymbol("{" + exactAmount + "}");
                 }
                 catch (Exception e) {
-                    System.out.println("Please fill in the appropriate quantifier field with a valid integer");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Invalid input");
+                    alert.setHeaderText("There was an error");
+                    alert.setContentText("Please fill in the appropriate quantifier field with a valid integer");
+                    alert.showAndWait();
                     errors = true;
                 }
                 break;
@@ -98,11 +103,33 @@ public class QuantifierWindowController {
                 try {
                     int from = Integer.parseInt(quantifierRangeFirstField.getText());
                     int to = Integer.parseInt(quantifierRangeLastField.getText());
-                    quantifier.setDesc("From " + from + " to " + to + " (inclusive)");
-                    quantifier.setSymbol("{" + from + "," + to + "}");
+                    if (from > 9 || from < 0 || to > 9 || to < 0) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Invalid input");
+                        alert.setHeaderText("There was an error");
+                        alert.setContentText("The desired quantifier range digits must be from 1 to 9");
+                        alert.showAndWait();
+                        errors = true;
+                    }
+                    else if (from >= to) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Invalid input");
+                        alert.setHeaderText("There was an error");
+                        alert.setContentText("The first digit in the quantifier range must be lower than the second digit");
+                        alert.showAndWait();
+                        errors = true;
+                    }
+                    else {
+                        quantifier.setDesc("From " + from + " to " + to + " (inclusive)");
+                        quantifier.setSymbol("{" + from + "," + to + "}");
+                    }
                 }
                 catch (Exception e) {
-                    System.out.println("Please fill in the appropriate quantifier fields with a valid integer");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Invalid input");
+                    alert.setHeaderText("There was an error");
+                    alert.setContentText("Please fill in the appropriate quantifier fields with a valid integer");
+                    alert.showAndWait();
                     errors = true;
                 }
                 break;
@@ -113,12 +140,20 @@ public class QuantifierWindowController {
                     quantifier.setSymbol("{" + minAmount + ",}");
                 }
                 catch (Exception e) {
-                    System.out.println("Please fill in the appropriate quantifier field with a valid integer");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Invalid input");
+                    alert.setHeaderText("There was an error");
+                    alert.setContentText("Please fill in the appropriate quantifier field with a valid integer");
+                    alert.showAndWait();
                     errors = true;
                 }
                 break;
             default:
-                System.out.println("Error while finding selected quantifier");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("There was an error");
+                alert.setContentText("The selected quantifier could not be found, sorry for the inconvenience");
+                alert.showAndWait();
                 errors = true;
         }
     

@@ -264,7 +264,11 @@ public class EditorWindowController {
     
         }
         catch (IOException exception){
-            System.out.println("Failed to create a new window");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("We could not open the window");
+            alert.setContentText("There was an error when opening the window, sorry about the inconvenience");
+            alert.showAndWait();
         }
     }
     
@@ -305,58 +309,110 @@ public class EditorWindowController {
 
         if (option.equals("exactly")) {
             String toMatch = matchesExactlyField.getText();
-            for (int i=0; i<toMatch.length(); i++) {
-                String first = toMatch.substring(0, i);
-                String last = toMatch.substring(i, toMatch.length());
-                char c = toMatch.charAt(i);
-                if (c == '+' || c == '*' || c == '?' || c == '^' || c == '$' || c == '\\' || c == '.' || c == '['
-                    || c == ']' || c == '{' || c == '}' || c == '(' || c == ')' || c == '|' || c == '/') {
-                    toMatch = first + "\\" + last;
-                    i++;
+            if (!toMatch.equals("")) {
+                for (int i = 0; i < toMatch.length(); i++) {
+                    String first = toMatch.substring(0, i);
+                    String last = toMatch.substring(i, toMatch.length());
+                    char c = toMatch.charAt(i);
+                    if (c == '+' || c == '*' || c == '?' || c == '^' || c == '$' || c == '\\' || c == '.' || c == '['
+                            || c == ']' || c == '{' || c == '}' || c == '(' || c == ')' || c == '|' || c == '/') {
+                        toMatch = first + "\\" + last;
+                        i++;
+                    }
                 }
+                element.setDesc("Matches '" + matchesExactlyField.getText() + "' exactly");
+                element.setSymbol("(?:" + toMatch + ")");
             }
-            element.setDesc("Matches '" + matchesExactlyField.getText() + "' exactly");
-            element.setSymbol("(?:" + matchesExactlyField.getText() + ")");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid input");
+                alert.setHeaderText("There was an error");
+                alert.setContentText("You must fill in the appropriate field in the selected element");
+                alert.showAndWait();
+                errors = true;
+            }
         }
         else if (option.equals("digitRange")) {
             try {
-                int n1 = Integer.parseInt(elementRangeMinField.getText());
-                int n2 = Integer.parseInt(elementRangeMaxField.getText());
-                element.setDesc("Digit from " + elementRangeMinField.getText() + " to " + elementRangeMaxField.getText());
-                element.setSymbol("[" + elementRangeMinField.getText() + "-" + elementRangeMaxField.getText() + "]");
+                int from = Integer.parseInt(elementRangeMinField.getText());
+                int to = Integer.parseInt(elementRangeMaxField.getText());
+                if (from > 9 || from < 0 || to > 9 || to < 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Invalid input");
+                    alert.setHeaderText("There was an error");
+                    alert.setContentText("The desired digits must be from 1 to 9");
+                    alert.showAndWait();
+                    errors = true;
+                }
+                else if (from >= to) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Invalid input");
+                    alert.setHeaderText("There was an error");
+                    alert.setContentText("The first digit must be lower than the second digit");
+                    alert.showAndWait();
+                    errors = true;
+                }
+                else {
+                    element.setDesc("Digit from " + elementRangeMinField.getText() + " to " + elementRangeMaxField.getText());
+                    element.setSymbol("[" + elementRangeMinField.getText() + "-" + elementRangeMaxField.getText() + "]");
+                }
             }
             catch (Exception e) {
-                System.out.println("Please fill in the appropriate quantifier field with a valid integer");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid input");
+                alert.setHeaderText("There was an error");
+                alert.setContentText("Please fill in the appropriate quantifier fields with a valid integer");
+                alert.showAndWait();
                 errors = true;
             }
         }
         else if (option.equals("anyCharOf")) {
             String toMatch = elementsCharOfField.getText();
-            for (int i=0; i<toMatch.length(); i++) {
-                String first = toMatch.substring(0, i);
-                String last = toMatch.substring(i, toMatch.length());
-                char c = toMatch.charAt(i);
-                if (c == '\\' || c == '-' || c == ']') {
-                    toMatch = first + "\\" + last;
-                    i++;
+            if (!toMatch.equals("")) {
+                for (int i = 0; i < toMatch.length(); i++) {
+                    String first = toMatch.substring(0, i);
+                    String last = toMatch.substring(i, toMatch.length());
+                    char c = toMatch.charAt(i);
+                    if (c == '\\' || c == '-' || c == ']') {
+                        toMatch = first + "\\" + last;
+                        i++;
+                    }
                 }
+                element.setDesc("Any char of '" + elementsCharOfField.getText() + "'");
+                element.setSymbol("[" + elementsCharOfField.getText() + "]");
             }
-            element.setDesc("Any char of '" + elementsCharOfField.getText() + "'");
-            element.setSymbol("[" + elementsCharOfField.getText() + "]");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid input");
+                alert.setHeaderText("There was an error");
+                alert.setContentText("You must fill in the appropriate field in the selected element");
+                alert.showAndWait();
+                errors = true;
+            }
         }
         else if (option.equals("anyCharNotOf")) {
             String toMatch = elementsCharNotOfField.getText();
-            for (int i=0; i<toMatch.length(); i++) {
-                String first = toMatch.substring(0, i);
-                String last = toMatch.substring(i, toMatch.length());
-                char c = toMatch.charAt(i);
-                if (c == '\\' || c == '-' || c == ']') {
-                    toMatch = first + "\\" + last;
-                    i++;
+            if (!toMatch.equals("")) {
+                for (int i=0; i<toMatch.length(); i++) {
+                    String first = toMatch.substring(0, i);
+                    String last = toMatch.substring(i, toMatch.length());
+                    char c = toMatch.charAt(i);
+                    if (c == '\\' || c == '-' || c == ']') {
+                        toMatch = first + "\\" + last;
+                        i++;
+                    }
                 }
+                element.setDesc("Any char not of '" + elementsCharNotOfField.getText() + "'");
+                element.setSymbol("[^" + elementsCharNotOfField.getText() + "]");
             }
-            element.setDesc("Any char not of '" + elementsCharNotOfField.getText() + "'");
-            element.setSymbol("[^" + elementsCharNotOfField.getText() + "]");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid input");
+                alert.setHeaderText("There was an error");
+                alert.setContentText("You must fill in the appropriate field in the selected element");
+                alert.showAndWait();
+                errors = true;
+            }
         }
         else {
             element.setDesc("Other");
@@ -377,7 +433,11 @@ public class EditorWindowController {
                 QuantifierWindowController quantifierController = StageConfig.getQuantifierWindowController();
                 quantifierController.setElement(element);
             } catch (IOException exception) {
-                System.out.println("Failed to create a new window");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("We could not open the window");
+                alert.setContentText("There was an error when opening the window, sorry about the inconvenience");
+                alert.showAndWait();
             }
         }
     }
@@ -393,7 +453,11 @@ public class EditorWindowController {
             selectedGroup = ((RadioButton) groupToggle.getSelectedToggle()).getUserData().toString();
         }
         catch (Exception e) {
-            System.out.println("No group option was selected!");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("There was an error");
+            alert.setContentText("No group option was selected");
+            alert.showAndWait();
             errors = true;
         }
 
@@ -425,7 +489,11 @@ public class EditorWindowController {
                 group.setEndSymbol(")");
                 break;
             default:
-                System.out.println("There was an error with the selected group");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("There was an error");
+                alert.setContentText("There was an error with the selected group");
+                alert.showAndWait();
                 errors = true;
         }
 
@@ -435,7 +503,11 @@ public class EditorWindowController {
             try {
                 selectedQuantifier = ((RadioButton) quantifierToggle.getSelectedToggle()).getUserData().toString();
             } catch (Exception e) {
-                System.out.println("There was no quantifier option selected!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("There was an error");
+                alert.setContentText("No quantifier option was selected");
+                alert.showAndWait();
                 errors = true;
             }
 
@@ -464,7 +536,11 @@ public class EditorWindowController {
                         quantifier.setSymbol("{" + exactAmount + "}");
                     }
                     catch (Exception e) {
-                        System.out.println("Please fill in the appropriate quantifier field with a valid integer");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Invalid input");
+                        alert.setHeaderText("There was an error");
+                        alert.setContentText("Please fill in the appropriate quantifier field with a valid integer");
+                        alert.showAndWait();
                         errors = true;
                     }
                     break;
@@ -472,11 +548,33 @@ public class EditorWindowController {
                     try {
                         int from = Integer.parseInt(quantifierRangeFirstField.getText());
                         int to = Integer.parseInt(quantifierRangeLastField.getText());
-                        quantifier.setDesc("From " + from + " to " + to + " (inclusive)");
-                        quantifier.setSymbol("{" + from + "," + to + "}");
+                        if (from > 9 || from < 0 || to > 9 || to < 0) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Invalid input");
+                            alert.setHeaderText("There was an error");
+                            alert.setContentText("The desired quantifier range digits must be from 1 to 9");
+                            alert.showAndWait();
+                            errors = true;
+                        }
+                        else if (from >= to) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Invalid input");
+                            alert.setHeaderText("There was an error");
+                            alert.setContentText("The first digit in the quantifier range must be lower than the second digit");
+                            alert.showAndWait();
+                            errors = true;
+                        }
+                        else {
+                            quantifier.setDesc("From " + from + " to " + to + " (inclusive)");
+                            quantifier.setSymbol("{" + from + "," + to + "}");
+                        }
                     }
                     catch (Exception e) {
-                        System.out.println("Please fill in the appropriate quantifier fields with a valid integer");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Invalid input");
+                        alert.setHeaderText("There was an error");
+                        alert.setContentText("Please fill in the appropriate quantifier fields with a valid integer");
+                        alert.showAndWait();
                         errors = true;
                     }
                     break;
@@ -487,12 +585,20 @@ public class EditorWindowController {
                         quantifier.setSymbol("{" + minAmount + ",}");
                     }
                     catch (Exception e) {
-                        System.out.println("Please fill in the appropriate quantifier field with a valid integer");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Invalid input");
+                        alert.setHeaderText("There was an error");
+                        alert.setContentText("Please fill in the appropriate quantifier field with a valid integer");
+                        alert.showAndWait();
                         errors = true;
                     }
                     break;
                 default:
-                    System.out.println("Error while finding selected quantifier");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("There was an error");
+                    alert.setContentText("The selected quantifier could not be found, sorry for the inconvenience");
+                    alert.showAndWait();
                     errors = true;
             }
         }

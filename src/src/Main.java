@@ -3,7 +3,8 @@ package src;
 /**
  *  To-do:
  *      - Look into RichTextFX for highlighting the test data
- *      - Add proper error dialog boxes to editor window
+ *      - Add proper validation to inputs in quantifier window
+ *      - Fix bug: changing the group or quantifier in the editor window does not show the changes in the full expression
  *      - Make the listview properly display descriptions (with quantifiers) instead of symbols
  *
  * Extras:

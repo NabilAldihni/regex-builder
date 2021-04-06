@@ -133,7 +133,11 @@ public class MainWindowController {
             editorStage.show();
         }
         catch (IOException e){
-            System.out.println("Failed to create a new window");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("We could not open the window");
+            alert.setContentText("There was an error when opening the window, sorry about the inconvenience");
+            alert.showAndWait();
         }
     }
 
@@ -288,7 +292,11 @@ public class MainWindowController {
             }
         }
         catch (IOException e){
-            System.out.println("Failed to create a new window");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("We could not open the window");
+            alert.setContentText("There was an error when opening the window, sorry about the inconvenience");
+            alert.showAndWait();
         }
     }
 
