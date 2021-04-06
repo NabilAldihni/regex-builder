@@ -1,16 +1,5 @@
 package src;
 
-/**
- *  To-do:
- *      - Make the listview properly display descriptions (with quantifiers) instead of symbols
- *      - Help menu
- *      - Fix bug: changing the group or quantifier in the editor window does not show the changes in the full expression
- *      - Look into RichTextFX for highlighting the test data
- *
- * Extras:
- *      -
- */
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;

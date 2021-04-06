@@ -52,7 +52,7 @@ public class MainWindowController {
         expressions = new ArrayList<Expression>();
         selectedIndex = 0;
 
-        // Cell Factory to allow the ListView to store Expression objects while displaying only a string of the expression
+        // Cell Factory to allow the ListView to store whole Expression objects while displaying a full description of the expression
         expressionListView.setCellFactory(new Callback<ListView<Expression>, ListCell<Expression>>() {
             @Override
             public ListCell<Expression> call(ListView<Expression> listView) {

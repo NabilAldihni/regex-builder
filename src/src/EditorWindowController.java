@@ -67,7 +67,7 @@ public class EditorWindowController {
         quantifier = new Quantifier();
         selectedIndex = 0;
     
-        // Cell Factory to allow the ListView to store Element objects while displaying only a string of the expression
+        // Cell Factory to allow the ListView to store whole Element objects while displaying a description of the elements
         elementListView.setCellFactory(new Callback<ListView<Element>, ListCell<Element>>() {
             @Override
             public ListCell<Element> call(ListView<Element> listView) {
