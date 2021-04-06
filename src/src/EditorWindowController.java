@@ -338,7 +338,12 @@ public class EditorWindowController {
         quantifierPane.setDisable(selectedGroup.equals("none"));
         refreshExpression();
     }
-
+    
+    // Called when the user selects a quantifier
+    public void selectedQuantifier(ActionEvent actionEvent) {
+    
+    }
+    
     // Called when any element is added - opens quantifier window
     public void pressedAddElement(ActionEvent actionEvent) {
         String option = ((Button)actionEvent.getSource()).getUserData().toString();
@@ -507,7 +512,7 @@ public class EditorWindowController {
             errors = true;
         }
 
-        // Find selected quantifier
+        // Find selected quantifier (this is repeated to validate the quantifier inputs again)
         if (!selectedGroup.equals("none")) {
             String selectedQuantifier = "";
             try {
@@ -634,4 +639,5 @@ public class EditorWindowController {
             stage.close();
         }
     }
+    
 }
