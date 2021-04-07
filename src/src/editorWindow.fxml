@@ -307,7 +307,7 @@
                         <Pane fx:id="quantifierPane" disable="true" prefHeight="237.0" prefWidth="202.0" style="-fx-border-color: white;">
                             <children>
                                 <Label layoutX="11.0" layoutY="6.0" text="Quantifiers" textFill="WHITE" underline="true" />
-                                <RadioButton fx:id="optOne" layoutX="12.0" layoutY="30.0" mnemonicParsing="false" onAction="#selectedQuantifier" selected="true" text="1" textFill="WHITE" userData="1">
+                                <RadioButton fx:id="optOne" layoutX="12.0" layoutY="30.0" mnemonicParsing="false" selected="true" text="1" textFill="WHITE" userData="1">
                                     <toggleGroup>
                                         <ToggleGroup fx:id="quantifierToggle" />
                                     </toggleGroup>
@@ -315,28 +315,28 @@
                               <Font size="10.0" />
                            </font>
                                 </RadioButton>
-                                <RadioButton fx:id="opt0Or1" layoutX="12.0" layoutY="58.0" mnemonicParsing="false" onAction="#selectedQuantifier" text="0 or 1" textFill="WHITE" toggleGroup="$quantifierToggle" userData="01">
+                                <RadioButton fx:id="opt0Or1" layoutX="12.0" layoutY="58.0" mnemonicParsing="false" text="0 or 1" textFill="WHITE" toggleGroup="$quantifierToggle" userData="01">
                            <font>
                               <Font size="10.0" />
                            </font></RadioButton>
-                                <RadioButton fx:id="opt0OrMore" layoutX="12.0" layoutY="86.0" mnemonicParsing="false" onAction="#selectedQuantifier" text="0 or more" textFill="WHITE" toggleGroup="$quantifierToggle" userData="0+">
+                                <RadioButton fx:id="opt0OrMore" layoutX="12.0" layoutY="86.0" mnemonicParsing="false" text="0 or more" textFill="WHITE" toggleGroup="$quantifierToggle" userData="0+">
                            <font>
                               <Font size="10.0" />
                            </font></RadioButton>
-                                <RadioButton fx:id="opt1OrMore" layoutX="12.0" layoutY="114.0" mnemonicParsing="false" onAction="#selectedQuantifier" text="1 or more" textFill="WHITE" toggleGroup="$quantifierToggle" userData="1+">
+                                <RadioButton fx:id="opt1OrMore" layoutX="12.0" layoutY="114.0" mnemonicParsing="false" text="1 or more" textFill="WHITE" toggleGroup="$quantifierToggle" userData="1+">
                            <font>
                               <Font size="10.0" />
                            </font></RadioButton>
-                                <RadioButton fx:id="optExactly" layoutX="12.0" layoutY="142.0" mnemonicParsing="false" onAction="#selectedQuantifier" text="Exactly" textFill="WHITE" toggleGroup="$quantifierToggle" userData="exact">
+                                <RadioButton fx:id="optExactly" layoutX="12.0" layoutY="142.0" mnemonicParsing="false" text="Exactly" textFill="WHITE" toggleGroup="$quantifierToggle" userData="exact">
                            <font>
                               <Font size="10.0" />
                            </font></RadioButton>
-                                <RadioButton fx:id="optRange" layoutX="12.0" layoutY="170.0" mnemonicParsing="false" onAction="#selectedQuantifier" text="From               to               (inclusive)" textFill="WHITE" toggleGroup="$quantifierToggle" userData="range">
+                                <RadioButton fx:id="optRange" layoutX="12.0" layoutY="170.0" mnemonicParsing="false" text="From               to               (inclusive)" textFill="WHITE" toggleGroup="$quantifierToggle" userData="range">
                            <font>
                               <Font size="10.0" />
                            </font>
                         </RadioButton>
-                                <RadioButton fx:id="optMin" layoutX="12.0" layoutY="198.0" mnemonicParsing="false" onAction="#selectedQuantifier" text="            or more" textFill="WHITE" toggleGroup="$quantifierToggle" userData="minAmount">
+                                <RadioButton fx:id="optMin" layoutX="12.0" layoutY="198.0" mnemonicParsing="false" text="            or more" textFill="WHITE" toggleGroup="$quantifierToggle" userData="minAmount">
                            <font>
                               <Font size="10.0" />
                            </font></RadioButton>
