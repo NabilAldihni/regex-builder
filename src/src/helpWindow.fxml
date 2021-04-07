@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="518.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="518.0" style="-fx-background-color: #444444;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.HelpWindowController">
    <children>
       <Text fill="WHITE" layoutX="136.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
          <font>

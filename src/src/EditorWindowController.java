@@ -149,6 +149,7 @@ public class EditorWindowController {
         }
         
         fullExp += group.getEndSymbol();
+        fullExp += quantifier.getSymbol();
         
         expressionField.setText(fullExp);
         

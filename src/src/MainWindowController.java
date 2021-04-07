@@ -333,5 +333,24 @@ public class MainWindowController {
     }
 
     public void pressedHelpBtn(ActionEvent actionEvent) {
+        // Opens the help window
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("src/helpWindow.fxml"));
+            Stage helpStage = new Stage();
+            helpStage.setTitle("Regex builder - Help menu");
+            helpStage.setScene(new Scene(root));
+            // APPLICATION_MODAL disables this window while the other one is open
+            helpStage.initModality(Modality.APPLICATION_MODAL);
+            helpStage.setResizable(false);
+            helpStage.show();
+        }
+        catch (IOException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("We could not open the window");
+            alert.setContentText("There was an error when opening the window, sorry about the inconvenience");
+            alert.showAndWait();
+        }
     }
 }
