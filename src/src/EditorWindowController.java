@@ -343,12 +343,7 @@ public class EditorWindowController {
         quantifierPane.setDisable(selectedGroup.equals("none"));
         refreshExpression();
     }
-    
-    // Called when the user selects a quantifier
-    public void selectedQuantifier(ActionEvent actionEvent) {
-    
-    }
-    
+
     // Called when any element is added - opens quantifier window
     public void pressedAddElement(ActionEvent actionEvent) {
         String option = ((Button)actionEvent.getSource()).getUserData().toString();
