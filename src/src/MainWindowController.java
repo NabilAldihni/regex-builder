@@ -41,6 +41,7 @@ public class MainWindowController {
     public Button moveUpBtn;
     public Button moveDownBtn;
     public Button editExpressionBtn;
+    public Button helpBtn;
     public CheckBox firstElementCheckBox;
     public CheckBox lastElementCheckBox;
 
@@ -329,5 +330,8 @@ public class MainWindowController {
         StringSelection stringSelection = new StringSelection(fullRegexField.getText());
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(stringSelection, null);
+    }
+
+    public void pressedHelpBtn(ActionEvent actionEvent) {
     }
 }
