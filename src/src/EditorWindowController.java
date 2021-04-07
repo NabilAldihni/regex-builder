@@ -543,146 +543,148 @@ public class EditorWindowController {
     public void pressedSaveExpression(ActionEvent actionEvent) {
         boolean errors = false;
 
-        // Find selected group
-        String selectedGroup = "";
-        try {
-            selectedGroup = ((RadioButton) groupToggle.getSelectedToggle()).getUserData().toString();
-        }
-        catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("There was an error");
-            alert.setContentText("No group option was selected");
-            alert.showAndWait();
-            errors = true;
-        }
-
-        // Find selected quantifier (this is repeated to validate the quantifier inputs again)
-        if (!selectedGroup.equals("none")) {
-            String selectedQuantifier = "";
+        if (elements.size() > 0) {
+            // Find selected group
+            String selectedGroup = "";
             try {
-                selectedQuantifier = ((RadioButton) quantifierToggle.getSelectedToggle()).getUserData().toString();
+                selectedGroup = ((RadioButton) groupToggle.getSelectedToggle()).getUserData().toString();
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("There was an error");
-                alert.setContentText("No quantifier option was selected");
+                alert.setContentText("No group option was selected");
                 alert.showAndWait();
                 errors = true;
             }
 
-            // Populates the properties of the quantifier according to the selection
-            switch (selectedQuantifier) {
-                case "1":
-                    quantifier.setDesc("One");
-                    quantifier.setSymbol("");
-                    break;
-                case "01":
-                    quantifier.setDesc("0 or 1");
-                    quantifier.setSymbol("?");
-                    break;
-                case "0+":
-                    quantifier.setDesc("0 or more");
-                    quantifier.setSymbol("*");
-                    break;
-                case "1+":
-                    quantifier.setDesc("1 or more");
-                    quantifier.setSymbol("+");
-                    break;
-                case "exact":
-                    try {
-                        int exactAmount = Integer.parseInt(quantifierExactlyField.getText());
-                        quantifier.setDesc("Exactly " + exactAmount);
-                        quantifier.setSymbol("{" + exactAmount + "}");
-                    }
-                    catch (Exception e) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Invalid input");
-                        alert.setHeaderText("There was an error");
-                        alert.setContentText("Please fill in the appropriate quantifier field with a valid integer");
-                        alert.showAndWait();
-                        errors = true;
-                    }
-                    break;
-                case "range":
-                    try {
-                        int from = Integer.parseInt(quantifierRangeFirstField.getText());
-                        int to = Integer.parseInt(quantifierRangeLastField.getText());
-                        if (from < 0 || to < 0) {
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setTitle("Invalid input");
-                            alert.setHeaderText("There was an error");
-                            alert.setContentText("The desired quantifier range digits must be positive");
-                            alert.showAndWait();
-                            errors = true;
-                        }
-                        else if (from >= to) {
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setTitle("Invalid input");
-                            alert.setHeaderText("There was an error");
-                            alert.setContentText("The first digit in the quantifier range must be lower than the second digit");
-                            alert.showAndWait();
-                            errors = true;
-                        }
-                        else {
-                            quantifier.setDesc("From " + from + " to " + to + " inclusive");
-                            quantifier.setSymbol("{" + from + "," + to + "}");
-                        }
-                    }
-                    catch (Exception e) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Invalid input");
-                        alert.setHeaderText("There was an error");
-                        alert.setContentText("Please fill in the appropriate quantifier fields with a valid integer");
-                        alert.showAndWait();
-                        errors = true;
-                    }
-                    break;
-                case "minAmount":
-                    try {
-                        int minAmount = Integer.parseInt(quantifierMinField.getText());
-                        quantifier.setDesc(minAmount + " or more");
-                        quantifier.setSymbol("{" + minAmount + ",}");
-                    }
-                    catch (Exception e) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Invalid input");
-                        alert.setHeaderText("There was an error");
-                        alert.setContentText("Please fill in the appropriate quantifier field with a valid integer");
-                        alert.showAndWait();
-                        errors = true;
-                    }
-                    break;
-                default:
+            // Find selected quantifier (this is repeated to validate the quantifier inputs again)
+            if (!selectedGroup.equals("none")) {
+                String selectedQuantifier = "";
+                try {
+                    selectedQuantifier = ((RadioButton) quantifierToggle.getSelectedToggle()).getUserData().toString();
+                } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText("There was an error");
-                    alert.setContentText("The selected quantifier could not be found, sorry for the inconvenience");
+                    alert.setContentText("No quantifier option was selected");
                     alert.showAndWait();
                     errors = true;
+                }
+
+                // Populates the properties of the quantifier according to the selection
+                switch (selectedQuantifier) {
+                    case "1":
+                        quantifier.setDesc("One");
+                        quantifier.setSymbol("");
+                        break;
+                    case "01":
+                        quantifier.setDesc("0 or 1");
+                        quantifier.setSymbol("?");
+                        break;
+                    case "0+":
+                        quantifier.setDesc("0 or more");
+                        quantifier.setSymbol("*");
+                        break;
+                    case "1+":
+                        quantifier.setDesc("1 or more");
+                        quantifier.setSymbol("+");
+                        break;
+                    case "exact":
+                        try {
+                            int exactAmount = Integer.parseInt(quantifierExactlyField.getText());
+                            quantifier.setDesc("Exactly " + exactAmount);
+                            quantifier.setSymbol("{" + exactAmount + "}");
+                        } catch (Exception e) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Invalid input");
+                            alert.setHeaderText("There was an error");
+                            alert.setContentText("Please fill in the appropriate quantifier field with a valid integer");
+                            alert.showAndWait();
+                            errors = true;
+                        }
+                        break;
+                    case "range":
+                        try {
+                            int from = Integer.parseInt(quantifierRangeFirstField.getText());
+                            int to = Integer.parseInt(quantifierRangeLastField.getText());
+                            if (from < 0 || to < 0) {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Invalid input");
+                                alert.setHeaderText("There was an error");
+                                alert.setContentText("The desired quantifier range digits must be positive");
+                                alert.showAndWait();
+                                errors = true;
+                            } else if (from >= to) {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Invalid input");
+                                alert.setHeaderText("There was an error");
+                                alert.setContentText("The first digit in the quantifier range must be lower than the second digit");
+                                alert.showAndWait();
+                                errors = true;
+                            } else {
+                                quantifier.setDesc("From " + from + " to " + to + " inclusive");
+                                quantifier.setSymbol("{" + from + "," + to + "}");
+                            }
+                        } catch (Exception e) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Invalid input");
+                            alert.setHeaderText("There was an error");
+                            alert.setContentText("Please fill in the appropriate quantifier fields with a valid integer");
+                            alert.showAndWait();
+                            errors = true;
+                        }
+                        break;
+                    case "minAmount":
+                        try {
+                            int minAmount = Integer.parseInt(quantifierMinField.getText());
+                            quantifier.setDesc(minAmount + " or more");
+                            quantifier.setSymbol("{" + minAmount + ",}");
+                        } catch (Exception e) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Invalid input");
+                            alert.setHeaderText("There was an error");
+                            alert.setContentText("Please fill in the appropriate quantifier field with a valid integer");
+                            alert.showAndWait();
+                            errors = true;
+                        }
+                        break;
+                    default:
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText("There was an error");
+                        alert.setContentText("The selected quantifier could not be found, sorry for the inconvenience");
+                        alert.showAndWait();
+                        errors = true;
+                }
+            } else {
+                quantifier.setSymbol("");
+                quantifier.setDesc("");
+            }
+
+            if (!errors) {
+                int index = mainController.getSelectedIndex();
+                // Adds created expression to main controller's ListView and ArrayList
+                Expression ex = new Expression(elements, quantifier, group);
+                mainController.expressionListView.getItems().add(index, ex);
+                mainController.getExpressions().add(index, ex);
+
+                // Selects the added expression in the ListView
+                mainController.expressionListView.getSelectionModel().select(index);
+
+                mainController.refreshExpression();
+
+                // Closes the window and returns to main window
+                Stage stage = (Stage) saveExpressionBtn.getScene().getWindow();
+                stage.close();
             }
         }
         else {
-            quantifier.setSymbol("");
-            quantifier.setDesc("");
-        }
-
-        if (!errors) {
-            int index = mainController.getSelectedIndex();
-            // Adds created expression to main controller's ListView and ArrayList
-            Expression ex = new Expression(elements, quantifier, group);
-            mainController.expressionListView.getItems().add(index, ex);
-            mainController.getExpressions().add(index, ex);
-            
-            // Selects the added expression in the ListView
-            mainController.expressionListView.getSelectionModel().select(index);
-            
-            mainController.refreshExpression();
-
-            // Closes the window and returns to main window
-            Stage stage = (Stage) saveExpressionBtn.getScene().getWindow();
-            stage.close();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("There was an error");
+            alert.setContentText("You must add at least 1 element to be able to save this expression");
+            alert.showAndWait();
         }
     }
-    
+
 }
