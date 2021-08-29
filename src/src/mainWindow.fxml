@@ -38,7 +38,7 @@
             <children>
                 <VBox alignment="BASELINE_CENTER" layoutY="30.0" prefHeight="179.0" prefWidth="48.0" spacing="2.0">
                     <children>
-                        <Button fx:id="addExpressionBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pressedAddExpression" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" textAlignment="CENTER">
+                        <Button fx:id="addExpressionBtn" onAction="#pressedAddExpression" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: white; -fx-background-radius: 0; -fx-background-insets: 0;" textAlignment="CENTER">
                             <graphic>
                                 <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
