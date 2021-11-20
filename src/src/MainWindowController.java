@@ -44,9 +44,11 @@ public class MainWindowController {
     public Button helpBtn;
     public CheckBox firstElementCheckBox;
     public CheckBox lastElementCheckBox;
-
+    
     @FXML
-    // Method called by FXML when the window is started
+    /**
+     * Method called by FXML when the window is started
+     */
     public void initialize() {
         // Updated mainWindowController in the StageConfig class so the editor window controller can later access it
         StageConfig.setMainWindowController(this);
@@ -87,23 +89,42 @@ public class MainWindowController {
         });
     }
     
+    /**
+     * Getter used to access the list of expressions
+     * @return arraylist of expressions
+     */
     public ArrayList<Expression> getExpressions() {
         return expressions;
     }
     
+    /**
+     * Used to change the current expressions in the list of expressions
+     * @param expressions
+     */
     public void setExpressions(ArrayList<Expression> expressions) {
         this.expressions = expressions;
     }
     
+    /**
+     * Getter used to access the selected item index
+     * @return the index
+     */
     public int getSelectedIndex() {
         return selectedIndex;
     }
-
+    
+    /**
+     * Used to change the current selectedIndex in the list of expressions
+     * @param selectedIndex
+     */
     public void setSelectedIndex(int selectedIndex) {
         this.selectedIndex = selectedIndex;
     }
-
-    // Called every time a change is made to the expressions list. Updates the string in the textField
+    
+    /**
+     * Called every time a change is made to the expressions list. Updates the string in the textField
+     * @return A string with the full expression
+     */
     public String refreshExpression() {
         fullRegexField.setText("");
         String fullExp = "";
@@ -123,8 +144,11 @@ public class MainWindowController {
 
         return fullExp;
     }
-
-    // Called when the add expression button is pressed (FXML event listener)
+    
+    /**
+     * Called when the add expression button is pressed (FXML event listener)
+     * @param actionEvent
+     */
     public void pressedAddExpression(ActionEvent actionEvent) {
         // Stores the selected index so the created expression is added in the correct place
         if (expressionListView.getSelectionModel().getSelectedIndex() == -1) {
@@ -155,7 +179,10 @@ public class MainWindowController {
         }
     }
 
-    // Removes selected expression from ListView and ArrayList
+    /**
+     * Removes selected expression from ListView and ArrayList
+     * @param actionEvent
+     */
     public void pressedRemoveExpression(ActionEvent actionEvent) {
         int index = expressionListView.getSelectionModel().getSelectedIndex();
         int size = expressionListView.getItems().size();
@@ -172,7 +199,10 @@ public class MainWindowController {
         refreshExpression();
     }
 
-    // Moves the selected expression up in the list
+    /**
+     * Moves the selected expression up in the list
+     * @param actionEvent
+     */
     public void pressedMoveUp(ActionEvent actionEvent) {
         Expression item = expressionListView.getSelectionModel().getSelectedItem();
         int index = expressionListView.getSelectionModel().getSelectedIndex();
@@ -186,7 +216,10 @@ public class MainWindowController {
         refreshExpression();
     }
 
-    // Moves the selected expression down in the list
+    /**
+     * Moves the selected expression down in the list
+     * @param actionEvent
+     */
     public void pressedMoveDown(ActionEvent actionEvent) {
         Expression item = expressionListView.getSelectionModel().getSelectedItem();
         int index = expressionListView.getSelectionModel().getSelectedIndex();
@@ -200,7 +233,10 @@ public class MainWindowController {
         refreshExpression();
     }
     
-    // Duplicates the selected expression
+    /**
+     * Duplicates the selected expression
+     * @param actionEvent
+     */
     public void pressedDuplicateExpression(ActionEvent actionEvent) {
         int index = expressionListView.getSelectionModel().getSelectedIndex();
         
@@ -213,7 +249,10 @@ public class MainWindowController {
         refreshExpression();
     }
 
-    // Opens the editor window and loads the selected expression's data
+    /**
+     * Opens the editor window and loads the selected expression's data
+     * @param actionEvent
+     */
     public void pressedEditExpression(ActionEvent actionEvent) {
         // Stores the selected index so the created expression is added in the correct place
         if (expressionListView.getSelectionModel().getSelectedIndex() == -1) {
@@ -315,23 +354,36 @@ public class MainWindowController {
         }
     }
 
-    // Updates the expression when the checkbox for first element is pressed
+    /**
+     * Updates the expression when the checkbox for first element is pressed
+     * @param actionEvent
+     */
     public void firstElementPressed(ActionEvent actionEvent) {
         refreshExpression();
     }
     
-    // Updates the expression when the checkbox for last element is pressed
+    /**
+     * Updates the expression when the checkbox for last element is pressed
+     * @param actionEvent
+     */
     public void lastElementPressed(ActionEvent actionEvent) {
         refreshExpression();
     }
 
-    // Copies full expression to clipboard
+    /**
+     * Copies full expression to clipboard
+     * @param actionEvent
+     */
     public void copyFullExpression(ActionEvent actionEvent) {
         StringSelection stringSelection = new StringSelection(fullRegexField.getText());
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(stringSelection, null);
     }
-
+    
+    /**
+     * Called when the help button is pressed
+     * @param actionEvent
+     */
     public void pressedHelpBtn(ActionEvent actionEvent) {
         // Opens the help window
         try {

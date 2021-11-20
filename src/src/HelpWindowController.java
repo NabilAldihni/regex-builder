@@ -1,6 +1,7 @@
 package src;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -9,6 +10,10 @@ public class HelpWindowController {
     public Button closeBtn;
     public Label contentLabel;
     
+    @FXML
+    /**
+     * Method called by FXML when the window is started
+     */
     public void initialize() {
         contentLabel.setText(
                 "In the main window that you just opened this menu from you can manage the expression " +
@@ -25,7 +30,11 @@ public class HelpWindowController {
                 "(button with pencil icon)."
         );
     }
-
+    
+    /**
+     * Called when the close button is pressed
+     * @param actionEvent
+     */
     public void pressedCloseBtn(ActionEvent actionEvent) {
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();

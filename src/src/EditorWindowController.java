@@ -54,7 +54,9 @@ public class EditorWindowController {
     private int selectedIndex;
 
     @FXML
-    // Method called by FXML when the window is started
+    /**
+     * Method called by FXML when the window is started
+     */
     public void initialize() {
         // Updated editorWindowController in StageConfig class so other controllers can access it
         StageConfig.setEditorWindowController(this);
@@ -96,47 +98,90 @@ public class EditorWindowController {
         quantifierPane.setDisable(selected.equals("None"));
     }
     
+    /**
+     * Gets the listview of elements
+     * @return the listview of elements
+     */
     public ListView getElementListView() {
         return elementListView;
     }
     
+    /**
+     * Sets the listview of elements
+     * @param elementListView
+     */
     public void setElementListView(ListView elementListView) {
         this.elementListView = elementListView;
     }
     
+    /**
+     * Gets the arraylist of elements
+     * @return arraylist of elements
+     */
     public ArrayList<Element> getElements() {
         return elements;
     }
     
+    /**
+     * Sets the arraylist of elements
+     * @param elements
+     */
     public void setElements(ArrayList<Element> elements) {
         this.elements = elements;
     }
     
+    /**
+     * Gets the group
+     * @return the group
+     */
     public Group getGroup() {
         return group;
     }
     
+    /**
+     * Sets the group
+     * @param group
+     */
     public void setGroup(Group group) {
         this.group = group;
     }
     
+    /**
+     * Gets the quantifier for the whole expression
+     * @return the quantifier
+     */
     public Quantifier getQuantifier() {
         return quantifier;
     }
     
+    /**
+     * Gets the index of the selected element
+     * @return selected index
+     */
     public int getSelectedIndex() {
         return selectedIndex;
     }
     
+    /**
+     * Sets the index of the selected element
+     * @param selectedIndex the index to change to
+     */
     public void setSelectedIndex(int selectedIndex) {
         this.selectedIndex = selectedIndex;
     }
     
+    /**
+     * Sets the quantifier for the whole expression
+     * @param quantifier
+     */
     public void setQuantifier(Quantifier quantifier) {
         this.quantifier = quantifier;
     }
     
-    // Called every time a change is made to the expressions list. Updates the string in the textField
+    /**
+     * Called every time a change is made to the expressions list. Updates the string in the textField
+     * @return the full, compiled expression
+     */
     public String refreshExpression() {
         expressionField.setText("");
         String fullExp = "";
@@ -156,7 +201,10 @@ public class EditorWindowController {
         return fullExp;
     }
     
-    // Removes selected element when remove button is pressed
+    /**
+     * Removes selected element when remove button is pressed
+     * @param actionEvent
+     */
     public void pressedRemoveElement(ActionEvent actionEvent) {
         int index = elementListView.getSelectionModel().getSelectedIndex();
         int size = elementListView.getItems().size();
@@ -173,7 +221,10 @@ public class EditorWindowController {
         refreshExpression();
     }
 
-    // Moves element up in the list
+    /**
+     * Moves selected element up in the list
+     * @param actionEvent
+     */
     public void pressedMoveUp(ActionEvent actionEvent) {
         Element item = (Element) elementListView.getSelectionModel().getSelectedItem();
         int index = elementListView.getSelectionModel().getSelectedIndex();
@@ -187,7 +238,10 @@ public class EditorWindowController {
         refreshExpression();
     }
 
-    // Moves element down in the list
+    /**
+     * Moves selected element downn in the list
+     * @param actionEvent
+     */
     public void pressedMoveDown(ActionEvent actionEvent) {
         Element item = (Element) elementListView.getSelectionModel().getSelectedItem();
         int index = elementListView.getSelectionModel().getSelectedIndex();
@@ -201,7 +255,10 @@ public class EditorWindowController {
         refreshExpression();
     }
 
-    // Allows user to edit the element's quantifier
+    /**
+     * Allows user to edit the element's quantifier
+     * @param actionEvent
+     */
     public void pressedEditElement(ActionEvent actionEvent) {
         // Stores the selected index so the created element is added in the correct place
         if (elementListView.getSelectionModel().getSelectedIndex() == -1) {
@@ -277,7 +334,10 @@ public class EditorWindowController {
         }
     }
     
-    // Duplicates selected element and adds it below
+    /**
+     * Duplicates selected element and adds it below
+     * @param actionEvent
+     */
     public void pressedDuplicateElement(ActionEvent actionEvent) {
         int index = elementListView.getSelectionModel().getSelectedIndex();
     
@@ -290,7 +350,10 @@ public class EditorWindowController {
         refreshExpression();
     }
 
-    // Called when the user selects a group - if the group is 'None' the quantifier section will be disabled
+    /**
+     * Called when the user selects a group - if the group is 'None' the quantifier section will be disabled
+     * @param actionEvent
+     */
     public void selectedGroup(ActionEvent actionEvent) {
         // Find selected group
         String selectedGroup = "";
@@ -344,7 +407,10 @@ public class EditorWindowController {
         refreshExpression();
     }
 
-    // Called when any element is added - opens quantifier window
+    /**
+     * Called when any element is added - opens quantifier window
+     * @param actionEvent
+     */
     public void pressedAddElement(ActionEvent actionEvent) {
         String option = ((Button)actionEvent.getSource()).getUserData().toString();
         Element element = new Element();
@@ -533,8 +599,11 @@ public class EditorWindowController {
         }
     }
 
-    // Called when "Save" button is pressed
-    // Collects all the selected data and creates an expression that is then added to the main window's list
+    /**
+     * Called when the "save" button is pressed.
+     * Collects all the selected data and creates an expression that is then added to the main window's list
+     * @param actionEvent
+     */
     public void pressedSaveExpression(ActionEvent actionEvent) {
         boolean errors = false;
 

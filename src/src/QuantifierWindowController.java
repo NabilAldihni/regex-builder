@@ -27,30 +27,51 @@ public class QuantifierWindowController {
     private EditorWindowController editorController;
     
     @FXML
-    // Method called by FXML when the window is started
+    /**
+     * Method called by FXML when the window is started
+     */
     public void initialize() {
         StageConfig.setQuantifierWindowController(this);
         editorController = StageConfig.getEditorWindowController();
         quantifier = new Quantifier();
     }
     
+    /**
+     * Gets the quantifier being edited/created
+     * @return quantifier
+     */
     public Quantifier getQuantifier() {
         return quantifier;
     }
     
+    /**
+     * Sets the quantifier being edited/created
+     * @param quantifier
+     */
     public void setQuantifier(Quantifier quantifier) {
         this.quantifier = quantifier;
     }
     
+    /**
+     * Gets the element associated with the quantifier
+     * @return the element
+     */
     public Element getElement() {
         return element;
     }
     
+    /**
+     * Sets the element associated with the quantifier
+     * @param element
+     */
     public void setElement(Element element) {
         this.element = element;
     }
     
-    // Called when apply button is pressed - saves quantifier
+    /**
+     * Called when the apply button is pressed - saves quantifier
+     * @param actionEvent
+     */
     public void pressedApplyBtn(ActionEvent actionEvent) {
         boolean errors = false;
         String selectedQuantifier = "";

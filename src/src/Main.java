@@ -7,7 +7,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
-    // Start method to show the main window when the program starts
+    /**
+     * Start method to show the main window when the program starts
+     */
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(MainWindowController.class.getResource("/src/mainWindow.fxml"));
         primaryStage.setTitle("Regex Builder");
@@ -16,7 +18,10 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    // Launch method is called automatically by JavaFX when the program starts
+    /**
+     * Launch method, which is called automatically by JavaFX when the program starts
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
